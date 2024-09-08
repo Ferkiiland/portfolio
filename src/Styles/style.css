@@ -540,7 +540,7 @@ grid-template-rows: 3;
 }
 
 .nav-bar{
-    min-height: 6vh;
+    min-height: 6%;
     display: grid;
     grid-template-columns: 1;
     grid-template-rows: 10;
