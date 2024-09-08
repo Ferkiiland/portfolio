@@ -82,6 +82,7 @@ span{
     min-height: 10vh;
     border-top: 2px solid #181818;
     border-bottom: 2px solid #181818;
+    align-content: center;
 }
 .Brand{
 padding-right: 6vh;
@@ -536,4 +537,51 @@ grid-template-rows: 3;
     margin-left: 22%;
     color: #ffffff;
     font-weight: 100;
+}
+
+.nav-bar{
+    min-height: 6vh;
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 10;
+    border-bottom: #181818 solid 1px;
+}
+
+.Nav-Logo{
+    grid-area: 1/1;
+    margin-right: 70vw;
+    width: 2%;
+}
+
+.Nav-Home{
+    color: #ffffff;
+    grid-area: 1/7;
+    margin-right: 2vw;
+    font-weight: 600;
+}
+
+.Nav-Portfolio{
+    color: #ffffff;
+    grid-area: 1/8;
+    margin-right: 2vw;
+    font-weight: 600;
+}
+
+.Nav-Frameworks{
+    color: #ffffff;
+    grid-area: 1/9;
+    margin-right: 2vw;
+    font-weight: 600;
+}
+
+.Nav-Contact{
+    color: #000000;
+    grid-area: 1/10;
+    margin-right: 2vw;
+    background-color: #ffff12;
+    padding: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 30px;
+    font-weight: 600;
 }
