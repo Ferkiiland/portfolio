@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    color:#2b2f32;
+}
+
+body{
+    background-color: #000000;
+}
+section{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../images/Bg.png');
+}
+
+span{
+    font-weight: 800;
+}
+.nav-bar{
+    margin-top: 0.5%;
+    margin-bottom: 1%;
+    min-height: 6%;
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 10;
+    border-bottom: #181818 solid 1px;
+}
+
+.Nav-Logo{
+    grid-area: 1/1;
+    margin-right: 70vw;
+    width: 2%;
+}
+
+.Nav-Home{
+    color: #ffffff;
+    grid-area: 1/7;
+    margin-right: 2vw;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.Nav-Portfolio{
+    color:#ffff12;
+    grid-area: 1/8;
+    margin-right: 2vw;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.Nav-Frameworks{
+    color: #ffffff;
+    grid-area: 1/9;
+    margin-right: 2vw;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.Nav-Contact{
+    color: #000000;
+    grid-area: 1/10;
+    margin-right: 2vw;
+    background-color: #ffff12;
+    padding: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.Impossible-Obby{
+    background-color: #000000;
+}
+.PContainer{
+    display: block;
+    text-align: center;
+    place-items: center;
+}
+.ProjectTittle{
+    font-weight: 900;
+    font-size: 8vh;
+    color: #ffff12;
+    margin:1% auto;
+}
+.ProjectDesc{
+    color: aliceblue;
+    max-width: 60ch;
+    margin:1% auto;
+    margin-bottom: 5%;
+}
+.Pswiper {
+    overflow:hidden;
+    justify-content: center
+}
+
+.swiper-pagination > .swiper-pagination-bullet {
+    opacity: 1;
+    border: white solid 1px;
+    background-color: transparent;
+}
+.swiper-pagination > .swiper-pagination-bullet-active {
+    background-color: #ffff12;
+}
+.Pslider {
+    overflow:hidden;
+    height: 100%;
+    width: 100%;
+}
+.Project {
+    margin: 1%,auto;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 0.5%;
+    width: 1080px;
+    height: 600px;
+}
+    
+.P1 {
+    grid-column: span 3 / span 3;
+    grid-row: span 2 / span 2;
+    border: 4px solid #2b2f32;
+    border-radius: 20px;
+    color: #ffff12;
+    font-weight: 900;
+    display: block;
+}
+
+.P2 {
+    grid-column: span 3 / span 3;
+    grid-row: span 5 / span 5;
+    grid-column-start: 1;
+    grid-row-start: 3;
+    border: 4px solid #2b2f32;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.GameImg{
+    height: 100%;
+    width: 100%;
+}
+
+.P3 {
+    grid-column: span 3 / span 3;
+    grid-column-start: 1;
+    grid-row-start: 8;
+    border: 4px solid #2b2f32;
+    border-radius: 20px;
+}
+
+.P4 {
+    grid-column: span 5 / span 5;
+    grid-row: span 5 / span 5;
+    grid-column-start: 4;
+    grid-row-start: 1;
+    border: 4px solid #2b2f32;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.P5 {
+    grid-column: span 5 / span 5;
+    grid-row: span 3 / span 3;
+    grid-column-start: 4;
+    grid-row-start: 6;
+    border: 4px solid #2b2f32;
+    border-radius: 20px;
+}
+
+.OwnerName{
+    margin-top: 2%;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 200%;
+}
+
+.Owner{
+    margin-top: 5%;
+    color: #ffff12;
+    font-weight: 900;
+    font-size: 125%;
+}

@@ -556,10 +556,11 @@ grid-template-rows: 3;
 }
 
 .Nav-Home{
-    color: #ffffff;
+    color:#ffff12;
     grid-area: 1/7;
     margin-right: 2vw;
-    font-weight: 600;
+    font-weight: 900;
+    text-decoration: none;
 }
 
 .Nav-Portfolio{
@@ -567,6 +568,7 @@ grid-template-rows: 3;
     grid-area: 1/8;
     margin-right: 2vw;
     font-weight: 600;
+    text-decoration: none;
 }
 
 .Nav-Frameworks{
@@ -574,6 +576,7 @@ grid-template-rows: 3;
     grid-area: 1/9;
     margin-right: 2vw;
     font-weight: 600;
+    text-decoration: none;
 }
 
 .Nav-Contact{
@@ -586,5 +589,6 @@ grid-template-rows: 3;
     padding-left: 20px;
     border-radius: 30px;
     font-weight: 600;
+    text-decoration: none;
 }
 
