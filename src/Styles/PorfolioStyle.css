@@ -17,6 +17,7 @@ section{
     justify-content: center;
     align-items: center;
     background-image: url('../images/Bg.png');
+    margin-bottom: 2%;
 }
 
 span{
@@ -78,112 +79,198 @@ span{
     background-color: #000000;
 }
 .PContainer{
-    display: block;
-    text-align: center;
-    place-items: center;
+    border: #181818 solid 5px;
+    border-radius: 20px;
+    padding: 2%;
+    height: auto;
+    width: 60vw;
+    padding-bottom: 2%;
 }
 .ProjectTittle{
     font-weight: 900;
     font-size: 8vh;
     color: #ffff12;
-    margin:1% auto;
+    text-align: left;
 }
 .ProjectDesc{
     color: aliceblue;
     max-width: 60ch;
-    margin:1% auto;
-    margin-bottom: 5%;
-}
-.Pswiper {
-    overflow:hidden;
-    justify-content: center
-}
-
-.swiper-pagination > .swiper-pagination-bullet {
-    opacity: 1;
-    border: white solid 1px;
-    background-color: transparent;
-}
-.swiper-pagination > .swiper-pagination-bullet-active {
-    background-color: #ffff12;
-}
-.Pslider {
-    overflow:hidden;
-    height: 100%;
-    width: 100%;
+    margin-bottom: 2%;
+    text-align: left;
 }
 .Project {
-    margin: 1%,auto;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    gap: 0.5%;
-    width: 1080px;
-    height: 600px;
+    display: grid; 
+    grid-auto-flow: column dense;
+    gap: 0px 0px; 
+    grid-template-areas: 
+    "PreviewLogo PreviewLogo ColorsContainer"
+    "Stock1 Stock1 GameIcon"
+    "Stock2 Stock2 Stock3"; 
+    width: 100%; 
+    height: 60%;
 }
-    
-.P1 {
-    grid-column: span 3 / span 3;
-    grid-row: span 2 / span 2;
-    border: 4px solid #2b2f32;
-    border-radius: 20px;
-    color: #ffff12;
-    font-weight: 900;
-    display: block;
-}
-
-.P2 {
-    grid-column: span 3 / span 3;
-    grid-row: span 5 / span 5;
-    grid-column-start: 1;
-    grid-row-start: 3;
-    border: 4px solid #2b2f32;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.GameImg{
-    height: 100%;
+.PreviewLogo{
+    justify-self: center; 
+    align-self: center; 
+    grid-area: PreviewLogo; 
+    padding: 2%;
+    border-radius: 19px 19px 19px 19px;
+    -webkit-border-radius: 19px 19px 19px 19px;
+    -moz-border-radius: 19px 19px 19px 19px;
     width: 100%;
+    height: 100%;
+    padding: 2%;
 }
-
-.P3 {
-    grid-column: span 3 / span 3;
-    grid-column-start: 1;
-    grid-row-start: 8;
-    border: 4px solid #2b2f32;
-    border-radius: 20px;
+.ColorsContainer{
+    grid-area: ColorsContainer;
+    grid-template-columns: 3;
+    grid-row: 1;
+    grid-area: ColorsContainer; 
+    width: 100%;
+    height: 100%;
+    padding-bottom: 4%;
+    padding-top: 4%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
-
-.P4 {
-    grid-column: span 5 / span 5;
-    grid-row: span 5 / span 5;
-    grid-column-start: 4;
-    grid-row-start: 1;
-    border: 4px solid #2b2f32;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.P5 {
-    grid-column: span 5 / span 5;
-    grid-row: span 3 / span 3;
-    grid-column-start: 4;
-    grid-row-start: 6;
-    border: 4px solid #2b2f32;
-    border-radius: 20px;
-}
-
-.OwnerName{
-    margin-top: 2%;
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 200%;
-}
-
-.Owner{
-    margin-top: 5%;
-    color: #ffff12;
+.Color1{
+    background: #f886eb;
+    display: grid;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 190x 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    width: 100%;
+    height: 30%;
+    margin-bottom: 3%;
     font-weight: 900;
-    font-size: 125%;
+}
+
+.Color1>p{
+    text-align: center;
+    margin: auto;
+}
+.Color2{
+    background: #1ae7e4;
+    display: grid;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 190x 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    width: 100%;
+    height: 30%;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    font-weight: 900;
+}
+.Color2>p{
+    text-align: center;
+    margin: auto;
+}
+.Color3{
+    background: #d1cccf;
+    display: grid;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 190x 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    width: 100%;
+    height: 30%;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    font-weight: 900;
+}
+.Color3>p{
+    text-align: center;
+    margin: auto;
+}
+.Stock1{
+    border-radius: 19px 19px 19px 19px;
+    -webkit-border-radius: 19px 19px 19px 19px;
+    -moz-border-radius: 19px 19px 19px 19px;
+    justify-self: center; 
+    align-self: center; 
+    grid-area: Stock1;
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+}
+.GameIcon {
+    justify-self: center; 
+    align-self: center; 
+    grid-area: GameIcon; 
+    width: 100%;
+    height: 97%;
+    border-radius: 19px 19px 19px 19px;
+    -webkit-border-radius: 19px 19px 19px 19px;
+    -moz-border-radius: 19px 19px 19px 19px;
+    padding: 2%;
+}
+.Stock2 {
+    justify-self: center; 
+    align-self: center; 
+    grid-area: Stock2; 
+    width: 100%;
+    height: 100%;
+    border-radius: 19px 19px 19px 19px;
+    -webkit-border-radius: 19px 19px 19px 19px;
+    -moz-border-radius: 19px 19px 19px 19px;
+    padding: 2%;
+}
+.Group {
+    justify-self: center; 
+    align-self: center; 
+    grid-area: Stock3;
+    width: 100%;
+    height: 97%;
+    border-radius: 19px 19px 19px 19px;
+    -webkit-border-radius: 19px 19px 19px 19px;
+    -moz-border-radius: 19px 19px 19px 19px;
+    padding: 2%;
+}
+
+.Color1-2{
+    background: #f7cd49;
+    display: grid;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 190x 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    width: 100%;
+    height: 30%;
+    margin-bottom: 3%;
+    font-weight: 900;
+}
+
+.Color1-2>p{
+    text-align: center;
+    margin: auto;
+}
+.Color2-2{
+    background: #33c996;
+    display: grid;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 190x 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    width: 100%;
+    height: 30%;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    font-weight: 900;
+}
+.Color2-2>p{
+    text-align: center;
+    margin: auto;
+}
+.Color3-2{
+    background: #996a49;
+    display: grid;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 190x 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    width: 100%;
+    height: 30%;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    font-weight: 900;
+}
+.Color3-2>p{
+    text-align: center;
+    margin: auto;
 }
