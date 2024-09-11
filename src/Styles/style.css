@@ -106,8 +106,8 @@ font-weight: 700;
 }
 
 .swiper {
-    width: 103vw;
-    height: 40vh;
+    width: 100%;
+    height: 100%;
     justify-content: center
 }
 
@@ -120,15 +120,20 @@ font-weight: 700;
     background-color: #ffff12;
 }
 .Pslider {
-    border-radius: 20px;
-    image-rendering: auto;
+    width: 100%;
+    display: block;
+    margin-top: 1%;
+    margin-bottom: 5%;
+    margin-left: 100%;
+    padding-left: 3%;
+    padding-right: 3%;
+    border-radius: 8%;
 }
 
-.swiper2 {
-    width: 80vw;
-    height: 40vh;
-    grid-area: 1/1;
+.swiper-wrapper{
+    display: flex;
 }
+
 
 .Portfolio_btn {
     margin-top: -4vh;
