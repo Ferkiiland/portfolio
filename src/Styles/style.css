@@ -50,6 +50,8 @@ span{
     margin-right: 6vh;
 }
 
+
+
 .HomeFerkiiBg{
     background-color: #ffff12;
     grid-area: 1 / 2;
@@ -71,6 +73,7 @@ span{
     margin-left: 12vh;
     color: white;
     font-weight: 400;
+    display: flex;
 }
 
 .Yellow{
@@ -79,15 +82,19 @@ span{
 }
 
 .Brands_Section{
-    min-height: 10vh;
+    min-width: 100%;
+    min-height: 7vh;
     border-top: 2px solid #181818;
     border-bottom: 2px solid #181818;
     align-content: center;
+    display: flex;
 }
 .Brand{
 padding-right: 6vh;
 text-align: center;
 max-width: 100%;
+max-height: 50%;
+display: flex;
 color: white;
 font-weight: 700;
 }
@@ -96,7 +103,7 @@ font-weight: 700;
 
 /* PORTFOLIO STYLES */
 .Portfolio_Section{
-    min-height: 30vh;
+    min-height: 25vh;
     max-height: 70vh;
     display: grid;
     grid-template-columns: 2fr;
@@ -111,6 +118,12 @@ font-weight: 700;
     justify-content: center
 }
 
+@media only screen and (max-width: 500px) {
+.swiper-pagination{
+    padding-bottom: 5%;
+}
+}
+
 .swiper-pagination > .swiper-pagination-bullet {
     opacity: 1;
     border: white solid 1px;
@@ -121,7 +134,6 @@ font-weight: 700;
 }
 .Pslider {
     width: 100%;
-    display: block;
     margin-top: 1%;
     margin-bottom: 5%;
     margin-left: 100%;
@@ -130,16 +142,12 @@ font-weight: 700;
     border-radius: 8%;
 }
 
-.swiper-wrapper{
-    display: flex;
-}
-
 
 .Portfolio_btn {
     margin-top: -4vh;
     grid-area: 2 / 1;
     font-weight: 900;
-    font-size: 30vh;
+    font-size: 15vw;
     -webkit-mask-image: linear-gradient(black, transparent);
     mask-image: linear-gradient(black 25%, transparent 67% );
     text-shadow: rgb(255, 255, 255) 0 0;
@@ -430,6 +438,7 @@ grid-template-rows: 3;
     color: #000000;
     text-align: center;
     grid-area: 1/2;
+    display: flexbox;
 }
 
 .Quote1{
@@ -588,13 +597,35 @@ grid-template-rows: 3;
 .Nav-Contact{
     color: #000000;
     grid-area: 1/10;
-    margin-right: 2vw;
     background-color: #ffff12;
+    text-align: center;
     padding: 5px;
     padding-right: 20px;
     padding-left: 20px;
     border-radius: 30px;
     font-weight: 600;
     text-decoration: none;
+    min-width: 13ch;
 }
 
+@media only screen and (max-width: 1440px) {
+    .FerkiiImg{
+        display: none;
+    }
+    .HomeFerkiiBg{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .HomeIntroduction{
+        font-size: 300%;
+    }
+    .Home_Section{
+        min-height: 50vh;
+    }
+    .nav-bar{
+        display: none;
+    }
+}
