@@ -628,4 +628,13 @@ grid-template-rows: 3;
     .nav-bar{
         display: none;
     }
+    .Brands_Section{
+        display: none;
+    }
+    .Developers{
+        display: block;
+        margin: auto;
+        place-items: center;
+        text-align: center;
+    }
 }
