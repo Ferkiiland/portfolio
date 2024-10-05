@@ -74,6 +74,7 @@ span{
     color: white;
     font-weight: 400;
     display: flex;
+    overflow: hidden;
 }
 
 .Yellow{
@@ -118,11 +119,6 @@ font-weight: 700;
     justify-content: center
 }
 
-@media only screen and (max-width: 500px) {
-.swiper-pagination{
-    padding-bottom: 5%;
-}
-}
 
 .swiper-pagination > .swiper-pagination-bullet {
     opacity: 1;
@@ -429,6 +425,7 @@ min-height: 50vh;
 display: grid;
 grid-template-columns: 2;
 grid-template-rows: 3;
+overflow: hidden;
 }
 
 .TestimonalHeader {
@@ -607,17 +604,51 @@ grid-template-rows: 3;
     text-decoration: none;
     min-width: 13ch;
 }
+.Testimonials_Mobile{
+    display: none;
+}
 
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1441px) {
     .FerkiiImg{
         display: none;
     }
     .HomeFerkiiBg{
         display: none;
     }
+    .Developers{
+        display: none;
+    }
+    .plans{
+        display: inline;
+    }
+    .PlansDiv1{
+        display: none;
+    }
+    .PlansDiv2{
+    display: none;
+    }
+    .PlansDiv3{
+    display: none;
+    }
+    .Card{
+        display: none;
+    }
+    .Chatbox{
+        display: none;
+    }
+    .PlansDiv4{
+    display: none;
+    }
+    .Testimonials_Section{
+        display: none;
+    }
+    .Testimonials_Mobile{
+        display: block;
+        background-color: #ffff12;
+    }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 601px) {
 
     .HomeIntroduction{
         font-size: 300%;
@@ -632,9 +663,14 @@ grid-template-rows: 3;
         display: none;
     }
     .Developers{
-        display: block;
-        margin: auto;
-        place-items: center;
-        text-align: center;
+        display: none;
+    }
+    .Testimonials_Section{
+        display: none;
     }
 }
+@media only screen and (max-width: 500px) {
+    .swiper-pagination{
+        padding-bottom: 5%;
+    }
+    }
