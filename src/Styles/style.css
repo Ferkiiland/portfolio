@@ -3,9 +3,26 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  font-family: "Days One", sans-serif;
 }
 
+.allison-regular {
+  font-family: "Allison", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.days-one-regular {
+  font-family: "Days One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fredoka-regular {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 html, body {
   height: 100%;
   background-image: radial-gradient(#131313, 40%, #000000);
@@ -22,12 +39,48 @@ html, body {
   justify-content: space-between;
   align-items: center;
   padding: 0 2%;
-  background: rgba(6, 6, 5, 10);
-  background: rgba(6, 6, 5, 10);
-  background: linear-gradient(90deg,rgba(6, 6, 5, 0.8) 37%, rgba(6, 6, 5, 0.8) 81%);
+  background: linear-gradient(90deg, rgba(6, 6, 5, 0.8) 37%, rgba(6, 6, 5, 0.8) 81%);
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   z-index: 1000;
+  overflow: hidden; /* Necesario para ocultar el brillo fuera del borde */
+}
+
+/* ✨ Brillo diagonal más delgado y rápido */
+.navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 20%; /* brillo más delgado */
+  height: 100%;
+  background: linear-gradient(
+    30deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: shine 8s infinite ease-in-out;
+}
+
+/* 💫 Animación: brillo pasa en 1s, luego espera 7s antes de reiniciar */
+@keyframes shine {
+  0% {
+    left: -50%;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  15% {
+    left: 120%;
+    opacity: 0;
+  }
+  100% {
+    left: 120%;
+    opacity: 0;
+  }
 }
 
 .navbar .logo {
@@ -39,10 +92,10 @@ html, body {
 }
 
 .navbar .logo img {
-height: 3vh; 
-width: auto;  
-margin-right: 1vw;
-filter: sepia(1) saturate(10000%) hue-rotate(10deg) brightness(1.2);
+  height: 2vh;
+  width: auto;
+  margin-right: 1vw;
+  filter: sepia(1) saturate(10000%) hue-rotate(10deg) brightness(1.2);
 }
 
 .navbar ul {
@@ -52,9 +105,10 @@ filter: sepia(1) saturate(10000%) hue-rotate(10deg) brightness(1.2);
 }
 
 .navbar ul li a {
+  font-family: Fredoka;
   text-decoration: none;
   color: #fff;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.9rem;
   transition: 0.3s;
 }
@@ -93,6 +147,7 @@ filter: sepia(1) saturate(10000%) hue-rotate(10deg) brightness(1.2);
   width: 1em;
   height: 1em;
 }
+
 .Home {
   color: #fffe35;
 }
@@ -101,6 +156,7 @@ filter: sepia(1) saturate(10000%) hue-rotate(10deg) brightness(1.2);
 min-height: 90vh;
 display: flex;
 justify-content: center;
+flex-direction: column;
 align-items: center;
 color: #2b2f32;
 background-image: url(/src/images/UiBg.png);
@@ -108,9 +164,163 @@ background-color: rgba(0, 0, 0, 0.9);
 background-blend-mode: darken;
 }
 
-.FerkiiImg {
-    width: 35vw;
+.BeforeTittle {
+  font-family: Allison;
+  color: #fffe35;
+  font-weight: 600;
+  font-size: 75px;
+  margin-left: -250px;
+  margin-bottom: -45px;
 }
+
+.Tittle {
+  font-family: Days one;
+  font-weight: 900;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  font-size: 100px;
+}
+
+.BehindTittle {
+  font-family: Allison;
+  color: #fffe35;
+  font-weight: 600;
+  font-size: 75px;
+  margin-left: 190px;
+  margin-top: -45px;
+}
+
+.Info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 100px;
+}
+
+.Aboutme {
+min-height: 450px;
+display: flex;
+justify-content: center;
+align-items: center;
+place-items: center;
+place-content: center;
+flex-direction: row;
+color: #fffe35;
+border-radius: 30px;
+width: 90vw;
+
+
+}
+
+.AboutContainer {
+  background-color: #fffe35;
+  border-radius: 400px;
+}
+
+.AboutImage {
+    width: 20vw;
+    border-radius: 400px;
+}
+
+.AboutInfo{
+  width: 70%;
+  min-height: 400px;
+  border-radius: 5px;
+  margin-left: 50px;
+  color: #fffe35;
+  font-size: 70px;
+}
+
+.AboutInfo p {
+  font-family: Fredoka;
+  font-weight: 400;
+  font-size: 20px;
+  color: #757e86;
+}
+
+.Technicalls {
+  font-weight: 400;
+  font-size: 35px;
+  display: flex;
+  flex-wrap: wrap;       
+  justify-content: center; 
+  gap: 40px;           
+  margin-top: 20px;    
+}
+
+.Exp, .Lang {
+  font-weight: 400;
+  font-size: 30px;
+  flex: 1 1 200px;
+  text-align: start;
+}
+
+.Skills {
+  font-weight: 400;
+  font-size: 30px;
+  flex-basis: 100%;
+  text-align: start;
+
+  display: flex;
+  flex-direction: column; 
+  align-items: start;
+  gap: 10px;
+}
+
+.Icons {
+  display: flex;      
+  flex-wrap: wrap;     
+  gap: 20px;           
+  align-items: center; 
+}
+
+.Icons svg {
+  margin-top: 15px;
+  width: 90px;
+  height: 90px;
+  transition: transform 0.2s ease;
+}
+
+.Icons svg:hover {
+  transform: scale(1.1);
+}
+
+.Icons img {
+  margin-top: 15px;
+  width: 80px; 
+  height: 80px;
+  transition: transform 0.2s ease;
+}
+
+.Icons img:hover {
+  transform: scale(1.1); 
+}
+
+.Exp .Ttl {
+  font-weight: 800;
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+.Exp .Grade {
+  color: #fffe35;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.Lang .Ttl {
+  font-weight: 800;
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+.Lang .Grade {
+  color: #fffe35;
+  font-size: 15px;
+  font-weight: 500;
+}
+
 .HomeIntroduction{
     font-size: 6vw;
     font-weight: 400;
@@ -123,7 +333,7 @@ background-blend-mode: darken;
 
 .Frk{
     color: #ffff12;
-    font-weight: 800;
+    font-weight: 700;
     display: inline-block;
 }
 
@@ -140,10 +350,10 @@ background-blend-mode: darken;
 
 .Developers{
   color: white;
-  font-weight: 400;
+  font-weight: 300;
   display: flex;
   overflow: hidden;
-  font-size: 1.1rem; 
+  font-size: 0.9rem; 
 }
 
 .Brands_Section{
@@ -173,7 +383,7 @@ background-blend-mode: darken;
   justify-content: center;
   white-space: nowrap;
   color: white;
-  font-weight: 700;
+  font-weight: 400;
   font-size: clamp(0.8rem, 1vw, 1.2rem);
   min-width: 120px;
   padding-right: 6vh;
@@ -399,6 +609,16 @@ padding: 0.4em 0.6em;
   font-size: 0.8rem; 
 }
 
+.Aboutme {
+  min-height: 250px;
+  width: 90vw;
+  border-radius: 15px;
+  
+  }
+.AboutImage{
+  width: 26vw;
+}
+
 }
 
 /* Ajustes para móviles */
@@ -449,6 +669,36 @@ padding: 0.3em 0.5em;
 
   .Developers{
     font-size: 0.7rem; 
+  }
+
+  .Info {
+    height: 35vb;
+    display: flex;
+    flex-direction: column;
+  }
+  .AboutContainer{
+    align-items: center;
+  }
+
+  .AboutInfo{
+    width: 70%;
+    min-height: 400px;
+    border-radius: 5px;
+    margin-left: 20px;
+    color: #fffe35;
+    font-size: 30px;
+  }
+  
+  .AboutInfo p {
+    font-family: Fredoka;
+    font-weight: 400;
+    font-size: 12px;
+    color: #757e86;
+  }
+  
+  .AboutInfo div {
+    font-weight: 400;
+    font-size: 15px;
   }
 
 }
