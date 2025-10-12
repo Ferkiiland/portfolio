@@ -350,6 +350,29 @@ width: 90vw;
   font-weight: 500;
 }
 
+.UIDesigns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.UIDItem{
+  margin: 5px;
+  border: 1px, solid, #747e86 ;
+  border-radius: 10px;
+  width: fit-content
+}
+
+.UIDItem:hover{
+  border: 1px, solid #fffe35;
+}
+
+.UIDItem img {
+  width: 480px;
+  height: auto;
+  border-radius: 10px;
+}
+
 .Frk{
     color: #ffff12;
     font-weight: 700;
