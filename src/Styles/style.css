@@ -823,20 +823,20 @@ padding: 0.3em 0.5em;
   }
 
   .Exp .Ttl {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .Exp .Grade {
-    font-size: 10px;
+    font-size: 12px;
     width: 20ch;
   }
 
   .Lang .Ttl {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .Lang .Grade {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .Icons svg {
@@ -853,7 +853,7 @@ padding: 0.3em 0.5em;
 
   .Technicalls .Exp,
   .Technicalls .Lang {
-    width: 48%; /* ← lado a lado */
+    width: 48%;
     text-align: start;
     display: flex;
     flex-direction: column;
