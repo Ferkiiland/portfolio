@@ -798,9 +798,66 @@ padding: 0.3em 0.5em;
   
   .AboutInfo div {
     font-weight: 400;
-    font-size: 15px;
+    font-size: 14px;
+  }
+  .AboutInfo {
+    min-height: 100px;
+    max-height: 700px;
   }
 
+  .AboutInfo p {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .Technicalls {
+    margin-top: 5px;
+    gap: 10px;
+    display: flex;
+    flex-direction: row; /* ← asegura que estén lado a lado */
+    justify-content: space-between;
+    flex-wrap: wrap; /* ← permite que bajen si el espacio es muy pequeño */
+  }
+
+  .Skills{
+    font-size: 14px;
+  }
+
+  .Exp .Ttl {
+    font-size: 10px;
+  }
+
+  .Exp .Grade {
+    font-size: 10px;
+    width: 20ch;
+  }
+
+  .Lang .Ttl {
+    font-size: 10px;
+  }
+
+  .Lang .Grade {
+    font-size: 10px;
+  }
+
+  .Icons svg {
+    margin-top: 5px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .Icons img {
+    margin-top: 5px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .Technicalls .Exp,
+  .Technicalls .Lang {
+    width: 48%; /* ← lado a lado */
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /* Ajustes para pantallas muy pequeñas */
@@ -851,6 +908,31 @@ padding: 0.2em 0.4em;
 
 .Developers{
   font-size: 0.6rem; 
+}
+
+.Technicalls {
+  display: flex;
+  flex-direction: row; /* lado a lado */
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap; /* permite que bajen si no caben */
+  gap: 8px;
+}
+
+.Technicalls .Exp,
+.Technicalls .Lang {
+  width: 48%; /* dos columnas */
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+}
+
+.Technicalls .Ttl {
+  font-size: 10px;
+}
+
+.Technicalls .Grade {
+  font-size: 9px;
 }
 
 }
