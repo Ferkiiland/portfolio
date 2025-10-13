@@ -700,6 +700,12 @@ main p {
     transform: scale(0.9);
     transform-origin: top center;
   }
+
+  .UIDesigns .UIDItem img {
+    width: 250px;
+    height: auto;
+    border-radius: 8px;
+  }
 }
 
 @media (max-width: 480px) {
