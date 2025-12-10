@@ -63,7 +63,7 @@ async function sendReview() {
 
     try {
         // 1️⃣ Leer dinámicamente el archivo tunnelite-url.json
-        const urlRes = await fetch('/reviews/tunnelite-url.json');
+        const urlRes = await fetch('../reviews/tunnelite-url.json');
         const urlData = await urlRes.json();
         const tunnelUrl = urlData.url;
 
