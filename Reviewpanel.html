@@ -164,94 +164,104 @@ button:hover {
 </div>
 
 <script>
-let orders = [];
-let selectedRating = 0;
-
-// Cargar JSON de órdenes
-fetch('./src/js/active-orders.json')
-  .then(res => res.json())
-  .then(data => { orders = data; })
-  .catch(err => console.error("Error loading orders:", err));
-
-
-const orderKeyInput = document.getElementById('orderKey');
-const checkKeyBtn = document.getElementById('checkKeyBtn');
-const keyError = document.getElementById('keyError');
-const reviewForm = document.getElementById('review-form');
-
-checkKeyBtn.addEventListener('click', () => {
-const key = orderKeyInput.value.trim();
-const order = orders.find(o => o.key === key);
-if (!order) {
-    keyError.textContent = "The key does not match any active order. Please check with ferkii.";
-    return;
-}
-keyError.textContent = "";
-document.getElementById('username').value = order.userName;
-document.getElementById('orderTitle').value = order.title;
-document.getElementById('category').value = order.category;
-
-// Mostrar el formulario y ocultar la sección de key
-document.getElementById('key-section').style.display = 'none';
-reviewForm.style.display = 'block';
-});
-
-// Manejo de estrellas
-const stars = document.querySelectorAll('.star');
-stars.forEach((star, index) => {
-star.addEventListener('click', () => {
-    selectedRating = index + 1;
-    updateStars();
-});
-});
-
-function updateStars() {
-stars.forEach((star, index) => {
-    if (index < selectedRating) star.classList.add('filled');
-    else star.classList.remove('filled');
-});
-}
-
-// Contador de caracteres
-const commentInput = document.getElementById('comment');
-const charCounter = document.getElementById('charCounter');
-
-commentInput.addEventListener('input', () => {
-const len = commentInput.value.length;
-const diff = 120 - len;
-if (diff >= 0) {
-    charCounter.textContent = `${len}/120`;
-    charCounter.classList.remove('over');
-} else {
-    charCounter.textContent = `-${-diff} over limit`;
-    charCounter.classList.add('over');
-}
-});
-
-// Enviar review (solo ejemplo, no envía a servidor)
-document.getElementById('sendBtn').addEventListener('click', () => {
-const username = document.getElementById('username').value;
-const orderTitle = document.getElementById('orderTitle').value;
-const category = document.getElementById('category').value;
-const comment = commentInput.value;
-
-if (selectedRating === 0) {
-    alert("Please select a rating before submitting.");
-    return;
-}
-
-console.log({
-    username, orderTitle, category, rating: selectedRating, comment
-});
-
-alert("Review sent successfully!");
-// Reset
-reviewForm.reset();
-selectedRating = 0;
-updateStars();
-charCounter.textContent = "0/120";
-});
-</script>
+    let orders = [];
+    let selectedRating = 0;
+    
+    fetch('./src/js/active-orders.json')
+      .then(res => res.json())
+      .then(data => { orders = data; })
+      .catch(err => console.error("Error loading orders:", err));
+    
+    const orderKeyInput = document.getElementById('orderKey');
+    const checkKeyBtn = document.getElementById('checkKeyBtn');
+    const keyError = document.getElementById('keyError');
+    const reviewForm = document.getElementById('review-form');
+    
+    checkKeyBtn.addEventListener('click', () => {
+        const key = orderKeyInput.value.trim();
+        const order = orders.find(o => o.key === key);
+        if (!order) {
+            keyError.textContent = "The key does not match any active order. Please check with ferkii.";
+            return;
+        }
+        keyError.textContent = "";
+        document.getElementById('username').value = order.userName;
+        document.getElementById('orderTitle').value = order.title;
+        document.getElementById('category').value = order.category;
+    
+        document.getElementById('key-section').style.display = 'none';
+        reviewForm.style.display = 'block';
+    });
+    
+    // Manejo de estrellas
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+            selectedRating = index + 1;
+            updateStars();
+        });
+    });
+    
+    function updateStars() {
+        stars.forEach((star, index) => {
+            if (index < selectedRating) star.classList.add('filled');
+            else star.classList.remove('filled');
+        });
+    }
+    
+    // Contador de caracteres
+    const commentInput = document.getElementById('comment');
+    const charCounter = document.getElementById('charCounter');
+    
+    commentInput.addEventListener('input', () => {
+        const len = commentInput.value.length;
+        charCounter.textContent = `${len}/120`;
+        charCounter.classList.toggle('over', len > 120);
+    });
+    
+    // Enviar review al bot
+    document.getElementById('sendBtn').addEventListener('click', async () => {
+        const username = document.getElementById('username').value;
+        const orderTitle = document.getElementById('orderTitle').value;
+        const category = document.getElementById('category').value;
+        const comment = commentInput.value.trim();
+    
+        if (selectedRating === 0) {
+            alert("Please select a rating before submitting.");
+            return;
+        }
+    
+        try {
+            const formData = new URLSearchParams();
+            formData.append('name', username);
+            formData.append('comment', comment);
+            formData.append('rating', selectedRating);
+            formData.append('orderTitle', orderTitle);
+            formData.append('category', category);
+    
+            const response = await fetch('https://dpjczb59.tunnelite.com/review', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formData
+            });
+    
+            if (response.ok) {
+                alert("Thank you! Your review has been submitted.");
+                reviewForm.reset();
+                selectedRating = 0;
+                updateStars();
+                charCounter.textContent = "0/120";
+            } else {
+                console.error("Response error:", response.status, await response.text());
+                alert("There was a problem submitting your review. Please try again later.");
+            }
+        } catch (err) {
+            console.error("Connection error:", err);
+            alert("Connection error. Please try again later.");
+        }
+    });
+    </script>
+    
 
 </body>
 </html>
