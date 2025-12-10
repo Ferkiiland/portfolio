@@ -40,7 +40,7 @@
 <body>
 
 <div class="card">
-    <h2>Commission review</h2>
+    <h2>Review</h2>
 
     <label>Tu nombre</label>
     <input id="name" type="text" placeholder="Escribe tu nombre">
@@ -51,13 +51,13 @@
     <button onclick="sendReview()">Enviar</button>
 </div>
 
-<!-- Cargar dinámicamente el archivo JS que genera el bot -->
+<!-- Cargar dinámicamente el JS que contiene la URL del túnel -->
 <script src="reviews/tunnelite-url.js"></script>
 
 <script>
 async function sendReview() {
-    const name = document.getElementById("name").value;
-    const review = document.getElementById("review").value;
+    const name = document.getElementById("name").value.trim();
+    const review = document.getElementById("review").value.trim();
 
     if (!name || !review) {
         alert("Por favor completa nombre y review.");
@@ -80,6 +80,8 @@ async function sendReview() {
             alert("¡Gracias! Tu review fue enviada.");
             location.reload();
         } else {
+            const errData = await response.json();
+            console.error(errData);
             alert("Hubo un problema al enviar tu review. Intenta más tarde.");
         }
     } catch (err) {
