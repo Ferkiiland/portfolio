@@ -40,7 +40,7 @@
 <body>
 
 <div class="card">
-    <h2>Review</h2>
+    <h2>Deja tu Review ✨</h2>
 
     <label>Tu nombre</label>
     <input id="name" type="text" placeholder="Escribe tu nombre">
@@ -48,47 +48,55 @@
     <label>Tu review</label>
     <textarea id="review" rows="5" placeholder="Escribe tu experiencia..."></textarea>
 
-    <button onclick="sendReview()">Enviar</button>
+    <button id="sendBtn">Enviar</button>
 </div>
 
-<!-- Cargar dinámicamente el JS que contiene la URL del túnel -->
+<!-- 1️⃣ Cargar el archivo JS que define window.TUNNEL_URL -->
 <script src="reviews/tunnelite-url.js"></script>
 
 <script>
-async function sendReview() {
+document.getElementById('sendBtn').addEventListener('click', async () => {
     const name = document.getElementById("name").value.trim();
-    const review = document.getElementById("review").value.trim();
+    const comment = document.getElementById("review").value.trim();
 
-    if (!name || !review) {
+    if (!name || !comment) {
         alert("Por favor completa nombre y review.");
         return;
     }
 
+    // 2️⃣ Verificar que el link esté disponible
     if (!window.TUNNEL_URL) {
         alert("No se pudo obtener el enlace de envío. Intenta más tarde.");
         return;
     }
 
     try {
+        // 3️⃣ Hacer fetch con manejo de CORS
         const response = await fetch(`${window.TUNNEL_URL}/review`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, comment: review, rating: 5 })
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name,
+                comment,
+                rating: 5
+            })
         });
 
         if (response.ok) {
             alert("¡Gracias! Tu review fue enviada.");
-            location.reload();
+            document.getElementById("name").value = "";
+            document.getElementById("review").value = "";
         } else {
-            const errData = await response.json();
-            console.error(errData);
+            console.error("Error en la respuesta:", response.status, await response.text());
             alert("Hubo un problema al enviar tu review. Intenta más tarde.");
         }
     } catch (err) {
-        console.error(err);
+        console.error("Error de conexión:", err);
         alert("Error de conexión. Intenta más tarde.");
     }
-}
+});
 </script>
 
 </body>
