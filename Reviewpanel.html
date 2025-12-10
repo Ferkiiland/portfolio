@@ -51,9 +51,6 @@
     <button id="sendBtn">Enviar</button>
 </div>
 
-<!-- 1️⃣ Cargar el archivo JS que define window.TUNNEL_URL -->
-<script src="reviews/tunnelite-url.js"></script>
-
 <script>
 document.getElementById('sendBtn').addEventListener('click', async () => {
     const name = document.getElementById("name").value.trim();
@@ -64,19 +61,10 @@ document.getElementById('sendBtn').addEventListener('click', async () => {
         return;
     }
 
-    // 2️⃣ Verificar que el link esté disponible
-    if (!window.TUNNEL_URL) {
-        alert("No se pudo obtener el enlace de envío. Intenta más tarde.");
-        return;
-    }
-
     try {
-        // 3️⃣ Hacer fetch con manejo de CORS
-        const response = await fetch(`${window.TUNNEL_URL}/review`, {
+        const response = await fetch('https://dpjczb59.tunnelite.com/review', {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 name,
                 comment,
