@@ -51,6 +51,9 @@
     <button onclick="sendReview()">Enviar</button>
 </div>
 
+<!-- Cargar dinámicamente el archivo JS que genera el bot -->
+<script src="reviews/tunnelite-url.js"></script>
+
 <script>
 async function sendReview() {
     const name = document.getElementById("name").value;
@@ -61,17 +64,16 @@ async function sendReview() {
         return;
     }
 
-    try {
-        // 1️⃣ Leer dinámicamente el archivo tunnelite-url.json
-        const urlRes = await fetch('../reviews/tunnelite-url.json');
-        const urlData = await urlRes.json();
-        const tunnelUrl = urlData.url;
+    if (!window.TUNNEL_URL) {
+        alert("No se pudo obtener el enlace de envío. Intenta más tarde.");
+        return;
+    }
 
-        // 2️⃣ Hacer POST al endpoint del tunnelite
-        const response = await fetch(`${tunnelUrl}/review`, {
+    try {
+        const response = await fetch(`${window.TUNNEL_URL}/review`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, comment: review, rating: 5 }) // ajusta rating si lo quieres dinámico
+            body: JSON.stringify({ name, comment: review, rating: 5 })
         });
 
         if (response.ok) {
