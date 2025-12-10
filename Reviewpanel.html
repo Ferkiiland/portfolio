@@ -4,11 +4,10 @@
 <meta charset="UTF-8">
 <title>Ferkii | Review</title>
 <style>
-    /* Reset y altura completa */
     html, body {
         display: flex;
-        justify-content: center; /* centra horizontal */
-        align-items: center;     /* centra vertical */
+        justify-content: center;
+        align-items: center;
         margin: 0;
         padding: 0;
         height: 100%;
@@ -20,264 +19,197 @@
         background: url('./src/images/Bg.svg') no-repeat center center fixed;
         background-size: cover;
     }
-
-    /* Overlay fijo sobre todo el viewport */
     body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 120vh;
-    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(0,0,0,1) 80%);
-    mix-blend-mode: overlay;
-    pointer-events: none; /* no interfiere con clicks */
-    z-index: 0; /* detrás de todo */
-}
-
-.card {
-    position: relative;
-    z-index: 1;
-    width: 450px;
-    max-width: 90%;
-    background: rgba(34,34,34,0.9);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    color: #fff;
-}
-
-label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-input, textarea {
-    width: 95%;
-    padding: 10px;
-    margin-top: 5px;
-    border: none;
-    border-radius: 6px;
-    background: #333;
-    color: #fff;
-    font-size: 14px;
-}
-
-input[readonly] {
-    background: #222;
-}
-
-.star-rating {
-    display: flex;
-    gap: 5px;
-    margin-top: 5px;
-    cursor: pointer;
-}
-
-.star {
-    width: 30px;
-    height: 30px;
-    fill: none;
-    stroke: #fff;
-    stroke-width: 2;
-    transition: fill 0.2s;
-}
-
-.star.filled {
-    fill: rgb(255, 255, 255);
-}
-
-.char-counter {
-    font-size: 12px;
-    margin-top: 3px;
-    color: #aaa;
-    text-align: right;
-}
-
-.char-counter.over {
-    color: red;
-}
-
-button {
-    margin-top: 20px;
-    padding: 12px;
-    width: 100%;
-    background: #5865f2;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    color: #fff;
-    font-size: 16px;
-}
-
-button:hover {
-    background: #4754d4;
-}
-
-#key-section {
-    display: flex;
-    flex-direction: column;
-}
-
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 120vh;
+        background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(0,0,0,1) 80%);
+        mix-blend-mode: overlay;
+        pointer-events: none;
+        z-index: 0;
+    }
+    .card {
+        position: relative;
+        z-index: 1;
+        width: 450px;
+        max-width: 90%;
+        background: rgba(34,34,34,0.9);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        color: #fff;
+    }
+    label { display: block; margin-top: 15px; font-weight: bold; }
+    input, textarea {
+        width: 95%;
+        padding: 10px;
+        margin-top: 5px;
+        border: none;
+        border-radius: 6px;
+        background: #333;
+        color: #fff;
+        font-size: 14px;
+    }
+    input[readonly] { background: #222; }
+    .star-rating { display: flex; gap: 5px; margin-top: 5px; cursor: pointer; }
+    .star { width: 30px; height: 30px; fill: none; stroke: #fff; stroke-width: 2; transition: fill 0.2s; }
+    .star.filled { fill: rgb(255, 255, 255); }
+    .char-counter { font-size: 12px; margin-top: 3px; color: #aaa; text-align: right; }
+    .char-counter.over { color: red; }
+    button {
+        margin-top: 20px;
+        padding: 12px;
+        width: 100%;
+        background: #5865f2;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 16px;
+    }
+    button:hover { background: #4754d4; }
+    #key-section { display: flex; flex-direction: column; }
 </style>
 </head>
 <body>
 
 <div class="card">
 
-<!-- Sección para ingresar la Key -->
-<div id="key-section">
-    <label>Enter Your Order Key</label>
-    <input type="text" id="orderKey" placeholder="e.g. df5e8ba1">
-    <button id="checkKeyBtn">Check Key</button>
-    <div id="keyError" style="color:red; margin-top:5px;"></div>
-</div>
-
-<!-- Formulario de review oculto inicialmente -->
-<div id="review-form" style="display:none;">
-    <label>Username</label>
-    <input type="text" id="username" readonly>
-
-    <label>Order Title</label>
-    <input type="text" id="orderTitle" readonly>
-
-    <label>Category</label>
-    <input type="text" id="category" readonly>
-
-    <label>Rating</label>
-    <div class="star-rating" id="starRating">
-        <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 9,9"/></svg>
-        <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 9,9"/></svg>
-        <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 9,9"/></svg>
-        <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 9,9"/></svg>
-        <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 9,9"/></svg>
+    <div id="key-section">
+        <label>Enter Your Order Key</label>
+        <input type="text" id="orderKey" placeholder="e.g. df5e8ba1">
+        <button id="checkKeyBtn">Check Key</button>
+        <div id="keyError" style="color:red; margin-top:5px;"></div>
     </div>
 
-    <label>Comment</label>
-    <textarea id="comment" rows="4" maxlength="120" placeholder="Write your review..."></textarea>
-    <div class="char-counter" id="charCounter">0/120</div>
+    <div id="review-form" style="display:none;">
+        <label>Username</label>
+        <input type="text" id="username" readonly>
 
-    <button id="sendBtn">Send Review</button>
-</div>
+        <label>Order Title</label>
+        <input type="text" id="orderTitle" readonly>
+
+        <label>Category</label>
+        <input type="text" id="category" readonly>
+
+        <label>Rating</label>
+        <div class="star-rating" id="starRating">
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 9,9"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 9,9"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 9,9"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 9,9"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 9,9"/></svg>
+        </div>
+
+        <label>Comment</label>
+        <textarea id="comment" rows="4" maxlength="120" placeholder="Write your review..."></textarea>
+        <div class="char-counter" id="charCounter">0/120</div>
+
+        <button id="sendBtn">Send Review</button>
+    </div>
 
 </div>
 
 <script>
-    let orders = [];
-    let selectedRating = 0;
-    
-    // Cargar JSON de órdenes desde GitHub Pages o desde tu repo local
-    fetch('./src/js/active-orders.json')
-      .then(res => res.json())
-      .then(data => { orders = data; })
-      .catch(err => console.error("Error loading orders:", err));
-    
-    const orderKeyInput = document.getElementById('orderKey');
-    const checkKeyBtn = document.getElementById('checkKeyBtn');
-    const keyError = document.getElementById('keyError');
-    const reviewForm = document.getElementById('review-form');
-    
-    // Verificar key
-    checkKeyBtn.addEventListener('click', () => {
-        const key = orderKeyInput.value.trim();
-        const order = orders.find(o => o.key === key);
-        if (!order) {
-            keyError.textContent = "The key does not match any active order. Please check with Ferkii.";
-            return;
-        }
-        keyError.textContent = "";
-    
-        document.getElementById('username').value = order.userName;
-        document.getElementById('orderTitle').value = order.title;
-        document.getElementById('category').value = order.category;
-    
-        document.getElementById('key-section').style.display = 'none';
-        reviewForm.style.display = 'block';
-    });
-    
-    // Manejo de estrellas
-    const stars = document.querySelectorAll('.star');
-    stars.forEach((star, index) => {
-        star.addEventListener('click', () => {
-            selectedRating = index + 1;
-            updateStars();
-        });
-    });
-    
-    function updateStars() {
-        stars.forEach((star, index) => {
-            if (index < selectedRating) star.classList.add('filled');
-            else star.classList.remove('filled');
-        });
+let orders = [];
+let selectedRating = 0;
+
+// Cargar órdenes
+fetch('./active-orders.json')
+  .then(res => res.json())
+  .then(data => { orders = data; })
+  .catch(err => console.error("Error loading orders:", err));
+
+const orderKeyInput = document.getElementById('orderKey');
+const checkKeyBtn = document.getElementById('checkKeyBtn');
+const keyError = document.getElementById('keyError');
+const reviewForm = document.getElementById('review-form');
+
+checkKeyBtn.addEventListener('click', () => {
+    const key = orderKeyInput.value.trim();
+    const order = orders.find(o => o.key === key);
+    if (!order) {
+        keyError.textContent = "The key does not match any active order. Please check with Ferkii.";
+        return;
     }
-    
-    // Contador de caracteres
-    const commentInput = document.getElementById('comment');
-    const charCounter = document.getElementById('charCounter');
-    
-    commentInput.addEventListener('input', () => {
-        const len = commentInput.value.length;
-        const diff = 120 - len;
-        if (diff >= 0) {
-            charCounter.textContent = `${len}/120`;
-            charCounter.classList.remove('over');
+    keyError.textContent = "";
+    document.getElementById('username').value = order.userName;
+    document.getElementById('orderTitle').value = order.title;
+    document.getElementById('category').value = order.category;
+    document.getElementById('key-section').style.display = 'none';
+    reviewForm.style.display = 'block';
+});
+
+// Estrellas
+const stars = document.querySelectorAll('.star');
+stars.forEach((star, index) => {
+    star.addEventListener('click', () => {
+        selectedRating = index + 1;
+        updateStars();
+    });
+});
+function updateStars() {
+    stars.forEach((star, index) => {
+        if (index < selectedRating) star.classList.add('filled');
+        else star.classList.remove('filled');
+    });
+}
+
+// Contador de caracteres
+const commentInput = document.getElementById('comment');
+const charCounter = document.getElementById('charCounter');
+commentInput.addEventListener('input', () => {
+    const len = commentInput.value.length;
+    const diff = 120 - len;
+    charCounter.textContent = diff >= 0 ? `${len}/120` : `-${-diff} over limit`;
+    charCounter.classList.toggle('over', diff < 0);
+});
+
+// Enviar review
+document.getElementById('sendBtn').addEventListener('click', async () => {
+    const username = document.getElementById('username').value;
+    const title = document.getElementById('orderTitle').value;
+    const category = document.getElementById('category').value;
+    const comment = commentInput.value.trim();
+
+    if (selectedRating === 0) { alert("Please select a rating."); return; }
+    if (!comment) { alert("Please enter a comment."); return; }
+
+    try {
+        const formData = new URLSearchParams();
+        formData.append('username', username);
+        formData.append('title', title);
+        formData.append('category', category);
+        formData.append('comment', comment);
+        formData.append('rating', selectedRating);
+
+        const response = await fetch('https://dpjczb59.tunnelite.com/review', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: formData
+        });
+
+        const text = await response.text();
+        console.log('Response status:', response.status, 'Body:', text);
+
+        if (response.ok) {
+            alert("Review sent successfully!");
+            reviewForm.reset();
+            selectedRating = 0;
+            updateStars();
+            charCounter.textContent = "0/120";
         } else {
-            charCounter.textContent = `-${-diff} over limit`;
-            charCounter.classList.add('over');
+            alert("Error sending review. Check console.");
         }
-    });
-    
-    // Enviar review al bot
-    document.getElementById('sendBtn').addEventListener('click', async () => {
-        const username = document.getElementById('username').value;
-        const orderTitle = document.getElementById('orderTitle').value;
-        const category = document.getElementById('category').value;
-        const comment = commentInput.value.trim();
-    
-        if (selectedRating === 0) {
-            alert("Please select a rating before submitting.");
-            return;
-        }
-        if (!comment) {
-            alert("Please enter a comment.");
-            return;
-        }
-    
-        try {
-            const formData = new URLSearchParams();
-            formData.append('name', username);
-            formData.append('comment', comment);
-            formData.append('rating', selectedRating);
-            formData.append('orderTitle', orderTitle);
-            formData.append('category', category);
-    
-            const response = await fetch('https://dpjczb59.tunnelite.com/review', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: formData
-            });
-    
-            const text = await response.text();
-            console.log('Response status:', response.status, 'Body:', text);
-    
-            if (response.ok) {
-                alert("Review sent successfully!");
-                reviewForm.reset();
-                selectedRating = 0;
-                updateStars();
-                charCounter.textContent = "0/120";
-            } else {
-                alert("Error sending review. Check console for details.");
-            }
-        } catch (err) {
-            console.error('Connection error:', err);
-            alert("Connection error. Please try again later.");
-        }
-    });
-    </script>
-    
-    
+    } catch (err) {
+        console.error('Connection error:', err);
+        alert("Connection error. Please try again later.");
+    }
+});
+</script>
 
 </body>
 </html>
