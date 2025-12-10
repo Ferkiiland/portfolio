@@ -167,7 +167,8 @@ button:hover {
     let orders = [];
     let selectedRating = 0;
     
-    fetch('./active-orders.json')
+    // Cargar JSON de órdenes desde GitHub Pages o desde tu repo local
+    fetch('./src/js/active-orders.json')
       .then(res => res.json())
       .then(data => { orders = data; })
       .catch(err => console.error("Error loading orders:", err));
@@ -177,14 +178,16 @@ button:hover {
     const keyError = document.getElementById('keyError');
     const reviewForm = document.getElementById('review-form');
     
+    // Verificar key
     checkKeyBtn.addEventListener('click', () => {
         const key = orderKeyInput.value.trim();
         const order = orders.find(o => o.key === key);
         if (!order) {
-            keyError.textContent = "The key does not match any active order. Please check with ferkii.";
+            keyError.textContent = "The key does not match any active order. Please check with Ferkii.";
             return;
         }
         keyError.textContent = "";
+    
         document.getElementById('username').value = order.userName;
         document.getElementById('orderTitle').value = order.title;
         document.getElementById('category').value = order.category;
@@ -215,8 +218,14 @@ button:hover {
     
     commentInput.addEventListener('input', () => {
         const len = commentInput.value.length;
-        charCounter.textContent = `${len}/120`;
-        charCounter.classList.toggle('over', len > 120);
+        const diff = 120 - len;
+        if (diff >= 0) {
+            charCounter.textContent = `${len}/120`;
+            charCounter.classList.remove('over');
+        } else {
+            charCounter.textContent = `-${-diff} over limit`;
+            charCounter.classList.add('over');
+        }
     });
     
     // Enviar review al bot
@@ -228,6 +237,10 @@ button:hover {
     
         if (selectedRating === 0) {
             alert("Please select a rating before submitting.");
+            return;
+        }
+        if (!comment) {
+            alert("Please enter a comment.");
             return;
         }
     
@@ -245,22 +258,25 @@ button:hover {
                 body: formData
             });
     
+            const text = await response.text();
+            console.log('Response status:', response.status, 'Body:', text);
+    
             if (response.ok) {
-                alert("Thank you! Your review has been submitted.");
+                alert("Review sent successfully!");
                 reviewForm.reset();
                 selectedRating = 0;
                 updateStars();
                 charCounter.textContent = "0/120";
             } else {
-                console.error("Response error:", response.status, await response.text());
-                alert("There was a problem submitting your review. Please try again later.");
+                alert("Error sending review. Check console for details.");
             }
         } catch (err) {
-            console.error("Connection error:", err);
+            console.error('Connection error:', err);
             alert("Connection error. Please try again later.");
         }
     });
     </script>
+    
     
 
 </body>
