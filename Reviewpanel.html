@@ -167,7 +167,7 @@ button:hover {
     let orders = [];
     let selectedRating = 0;
     
-    fetch('./src/js/active-orders.json')
+    fetch('./active-orders.json')
       .then(res => res.json())
       .then(data => { orders = data; })
       .catch(err => console.error("Error loading orders:", err));
