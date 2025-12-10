@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Review</title>
+</head>
+<body>
+    <h1>Test Review Form</h1>
+    <button onclick="testGet()">Test GET /</button>
+    <button onclick="testPostJSON()">Test POST JSON</button>
+    <button onclick="testPostForm()">Test POST Form</button>
+    
+    <script>
+        async function testGet() {
+            try {
+                const response = await fetch('http://localhost:3000/');
+                const data = await response.json();
+                console.log('GET /:', data);
+                alert('GET OK: ' + JSON.stringify(data));
+            } catch (err) {
+                console.error('GET Error:', err);
+                alert('GET Error: ' + err);
+            }
+        }
+        
+        async function testPostJSON() {
+            const data = {
+                username: 'testuser',
+                title: 'Test Order',
+                category: 'Design',
+                comment: 'This is a test review from local',
+                rating: 5
+            };
+            
+            try {
+                const response = await fetch('http://localhost:3000/review', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                console.log('POST JSON:', result);
+                alert('POST JSON OK');
+            } catch (err) {
+                console.error('POST JSON Error:', err);
+                alert('POST JSON Error: ' + err);
+            }
+        }
+        
+        async function testPostForm() {
+            const params = new URLSearchParams();
+            params.append('username', 'formuser');
+            params.append('title', 'Form Order');
+            params.append('category', 'Form Category');
+            params.append('comment', 'Test from form data');
+            params.append('rating', '4');
+            
+            try {
+                const response = await fetch('http://localhost:3000/review', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: params.toString()
+                });
+                const result = await response.json();
+                console.log('POST Form:', result);
+                alert('POST Form OK');
+            } catch (err) {
+                console.error('POST Form Error:', err);
+                alert('POST Form Error: ' + err);
+            }
+        }
+    </script>
+</body>
+</html>
