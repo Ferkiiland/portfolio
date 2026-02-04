@@ -1,77 +1,1082 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Test Review</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ferkii | Roblox Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allison&family=Days+One&family=Fredoka:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/Styles/style.css">
+  <link rel="icon" href="./src/images/Logo-Alt.png" type="image/x-icon">
+  <link rel="stylesheet"   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <script src="src/js/swiper-bundle.min.js"></script>
+  
 </head>
-<body>
-    <h1>Test Review Form</h1>
-    <button onclick="testGet()">Test GET /</button>
-    <button onclick="testPostJSON()">Test POST JSON</button>
-    <button onclick="testPostForm()">Test POST Form</button>
+<body>  
+  <nav class="navbar">
+    <div class="logo">
+      <img src="src/images/Logo.png" alt="Logo"> FERKII
+    </div>
+    <ul>
+      <li><a class="Home" href="#">About</a></li>
+      <li><a href="#">Testimonials</a></li>
+      <li><a href="#">Portfolio</a></li>
+      <li><a href="#">Frameworks</a></li>
+      <li><a href="#">Pricing</a></li>
+
+    </ul>
+
+    <a href='https://discordapp.com/users/525119218769723392' class="button" style="text-decoration: none;">
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 256 256" 
+        class="icon">
+        <path d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 
+          C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 
+          C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 
+          C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 
+          C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 
+          C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 
+          C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 
+          C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 
+          C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 
+          C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 
+          C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 
+          C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 
+          C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 
+          C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 
+          C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 
+          C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z 
+          M85.4738752,135.09489 
+          C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 
+          C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 
+          C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 
+          C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z 
+          M170.525237,135.09489 
+          C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 
+          C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 
+          C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 
+          C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z" 
+          fill="black"/>
+      </svg>
+      Discord
+    </a>
+  </nav>
+  <main>
+    <section class="About">
+      <p class="BeforeTittle">Roblox</p>
+      <p class="Tittle">FERKII</p>
+      <p class="BehindTittle">Portfolio</p>
+    </section>
+
+    <section class="Info">
+    <div class="Aboutme">Aboutme
+    <div class="info-container">
+      <img src="./src/images/FerkiiImg.png" alt="">
+    </div>
+    </div>
+    </section>
+
+    <div class="Developers">Worked with Developers as. <span class="Yellow">You are in <span class="Frk">GOOD</span> hands</span> </div>
+    <section class="Brands_Section">
+      <div class="Brands_Wrapper">
+        <div class="Brand">ZOLD?</div>
+        <div class="Brand">NFL</div>
+        <div class="Brand">TELOIV Studios</div>
+        <div class="Brand">KUROMISS COMMUNITY</div>
+        <div class="Brand">ASTRA STUDIOS</div>
+        <div class="Brand">BUDGEYS</div>
+        <div class="Brand">BYEKITTY</div>
+        <div class="Brand">DIGITAL GAME STUDIOS</div>
+        <div class="Brand">STERALD GANG</div>
+        <div class="Brand">JUNOZY</div>
+        <div class="Brand">ONE STOP HEAD SHOP</div>
+        <div class="Brand">PHANTASM</div>
     
-    <script>
-        async function testGet() {
-            try {
-                const response = await fetch('http://localhost:3000/');
-                const data = await response.json();
-                console.log('GET /:', data);
-                alert('GET OK: ' + JSON.stringify(data));
-            } catch (err) {
-                console.error('GET Error:', err);
-                alert('GET Error: ' + err);
-            }
-        }
-        
-        async function testPostJSON() {
-            const data = {
-                username: 'testuser',
-                title: 'Test Order',
-                category: 'Design',
-                comment: 'This is a test review from local',
-                rating: 5
-            };
-            
-            try {
-                const response = await fetch('http://localhost:3000/review', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-                const result = await response.json();
-                console.log('POST JSON:', result);
-                alert('POST JSON OK');
-            } catch (err) {
-                console.error('POST JSON Error:', err);
-                alert('POST JSON Error: ' + err);
-            }
-        }
-        
-        async function testPostForm() {
-            const params = new URLSearchParams();
-            params.append('username', 'formuser');
-            params.append('title', 'Form Order');
-            params.append('category', 'Form Category');
-            params.append('comment', 'Test from form data');
-            params.append('rating', '4');
-            
-            try {
-                const response = await fetch('http://localhost:3000/review', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: params.toString()
-                });
-                const result = await response.json();
-                console.log('POST Form:', result);
-                alert('POST Form OK');
-            } catch (err) {
-                console.error('POST Form Error:', err);
-                alert('POST Form Error: ' + err);
-            }
-        }
-    </script>
+        <div class="Brand">ZOLD?</div>
+        <div class="Brand">NFL</div>
+        <div class="Brand">TELOIV Studios</div>
+        <div class="Brand">KUROMISS COMMUNITY</div>
+        <div class="Brand">ASTRA STUDIOS</div>
+        <div class="Brand">BUDGEYS</div>
+        <div class="Brand">BYEKITTY</div>
+        <div class="Brand">DIGITAL GAME STUDIOS</div>
+        <div class="Brand">STERALD GANG</div>
+        <div class="Brand">JUNOZY</div>
+        <div class="Brand">ONE STOP HEAD SHOP</div>
+        <div class="Brand">PHANTASM</div>
+      </div>
+    </section>
+
+    <section class="Portfolio_Section">Clients<div class="ClientText">Testimonials</div>
+      <!-- Slider main container -->
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide">
+      <div class="Pslider">
+        <div class="QualName">flameyyf</div>
+        <div class="Qual">5.0⭐ | Fiverr</div>
+        <div class="Desc">Thanks alot for the GUI I would send this to my friends (if they ever get into roblox studio lulz)</div>
+        <div class="SrvcClass">UI & UX Service</div>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="Pslider">
+        <div class="QualName">ghxn_i</div>
+        <div class="Qual">5.0⭐ | Fiverr</div>
+        <div class="Desc">It was a great experience, UI matched my level of expectations, couldn't ask for something better.</div>
+        <div class="SrvcClass">UI & UX Service</div>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="Pslider">
+        <div class="QualName">tmico7</div>
+        <div class="Qual">5.0⭐ | Fiverr</div>
+        <div class="Desc">Ferkii is an EXCELLENT game art freelancer! Their work dazzled with perfect brand alignment, meticulous attention to details, and impressive visual appeal. Working with them was a joy—super cooperative. 🌟</div>
+        <div class="SrvcClass">UI & UX Service</div>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="Pslider">
+        <div class="QualName">kzkz</div>
+        <div class="Qual">5.0⭐ | TalentHub</div>
+        <div class="Desc">you make it very clear as to how to customize things without asking for assistance and get what i ask finished in an extremely impressive amount of time.</div>
+        <div class="SrvcClass">Scripting Service</div>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="Pslider">
+        <div class="QualName">Badobump</div>
+        <div class="Qual">5.0⭐ | TalentHub</div>
+        <div class="Desc">Wow everything looks perfect! Thanks Ferki!</div>
+        <div class="SrvcClass">3D Modeling Service</div>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="Pslider">
+        <div class="QualName">StarPxlStudios</div>
+        <div class="Qual">5.0⭐ | Discord</div>
+        <div class="Desc">Awesome job and impeccable attention to details, thanks for the textures too.</div>
+        <div class="SrvcClass">3D Modeling Service</div>
+      </div>
+    </div>
+    
+    
+    <div class="swiper-slide">
+      <div class="Pslider">
+        <div class="QualName">Laksh</div>
+        <div class="Qual">5.0⭐ | Discord</div>
+        <div class="Desc">Magestic UGC Artist</div>
+        <div class="SrvcClass">UGC Service</div>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="Pslider">
+        <div class="QualName">Laksh</div>
+        <div class="Qual">5.0⭐ | Discord</div>
+        <div class="Desc">Impecable work as everytime.</div>
+        <div class="SrvcClass">UGC Service</div>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="Pslider">
+        <div class="QualName">tmico7</div>
+        <div class="Qual">5.0⭐ | Fiverr</div>
+        <div class="Desc">Ferkii truly impressed with her impeccable ATTENTION to details and creative flair that perfectly aligned with our brand, and consistently delivered on time with politeness. 😊</div>
+        <div class="SrvcClass">UI & UX Service</div>
+      </div>
+    </div>
+
+
+    <div class="swiper-slide">
+      <div class="Pslider">
+        <div class="QualName">tmico7</div>
+        <div class="Qual">5.0⭐ | Fiverr</div>
+        <div class="Desc">I really needed help — They were patient, kind, and explained everything clearly so I could understand and follow along. Highly recommended. I’ll definitely come back again!</div>
+        <div class="SrvcClass">Bulding Service</div>
+      </div>
+    </div>
+
+
+    <div class="swiper-slide">
+      <div class="Pslider">
+        <div class="QualName">nightlarcreate</div>
+        <div class="Qual">5.0⭐ | Fiverr</div>
+        <div class="Desc">did a awesome job.</div>
+        <div class="SrvcClass">3D Modeling Service</div>
+      </div>
+    </div>
+
+
+    <div class="swiper-slide">
+      <div class="Pslider">
+        <div class="QualName">thegamedevy</div>
+        <div class="Qual">5.0⭐ | Fiverr</div>
+        <div class="Desc">Very much worth the money!</div>
+        <div class="SrvcClass">3D Modeling</div>
+      </div>
+    </div>
+
+
+    <div class="swiper-slide">
+      <div class="Pslider">
+        <div class="QualName">ToS</div>
+        <div class="Qual">5.0⭐ | HiddenDevs</div>
+        <div class="Desc">I am satisfied of your work.</div>
+        <div class="SrvcClass">UI & UX Service</div>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="Pslider">
+        <div class="QualName">Military</div>
+        <div class="Qual">5.0⭐ | HiddenDevs</div>
+        <div class="Desc">sick made my life easier.</div>
+        <div class="SrvcClass">UI & UX Service</div>
+      </div>
+    </div>
+
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>
+
+<div class="OverHeader">DEV WITH
+  <div class="OverDiv">
+  <div class="OverText">300+<div class="InnerText">Unique clients around the world</div></div>
+  <div class="OverText">50+<div class="InnerText">Collabs with Studios and Brands</div></div>
+  <div class="OverText">8M+<div class="InnerText">Attribuited In Game Visits</div></div>
+</div>
+</div>
+<a class="Portfolio_btn" href="" >portfolio</a>
+</section>
+
+<section class="Portfolio_Frame">
+<div class="Portfolio_Container">
+  <div class="PricingOptions">
+    <a href='https://discordapp.com/users/525119218769723392' class="button3" style="text-decoration: none;">UI / UX</a>
+    <a href='https://discordapp.com/users/525119218769723392' class="button3" style="text-decoration: none;">Graphic Arts</a>
+    <a href='https://discordapp.com/users/525119218769723392' class="button3" style="text-decoration: none;">Scripting</a>
+    <a href='https://discordapp.com/users/525119218769723392' class="button3" style="text-decoration: none;">3D Modeling</a>
+    <a href='https://discordapp.com/users/525119218769723392' class="button3" style="text-decoration: none;">Building</a>
+  </div>
+  <div class="UIDesigns">
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/Admin Panel start .png">
+        <img src="./src/images/PortfolioPreview/Admin Panel start .png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/Admin Panel.png">
+        <img src="./src/images/PortfolioPreview/Admin Panel.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/CartoonMain.png">
+        <img src="./src/images/PortfolioPreview/CartoonMain.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/Components.png">
+        <img src="./src/images/PortfolioPreview/Components.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/CRATESFINALUICONCEPT.png">
+        <img src="./src/images/PortfolioPreview/CRATESFINALUICONCEPT.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/INVENTORYCONCEPT.png">
+        <img src="./src/images/PortfolioPreview/INVENTORYCONCEPT.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/Cover.png">
+        <img src="./src/images/PortfolioPreview/Cover.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+    
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/FPSConcept1.png">
+        <img src="./src/images/PortfolioPreview/FPSConcept1.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/FPSConcept2.png">
+        <img src="./src/images/PortfolioPreview/FPSConcept2.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/HP HUD.png">
+        <img src="./src/images/PortfolioPreview/HP HUD.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/Lobby.png">
+        <img src="./src/images/PortfolioPreview/Lobby.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/NewUIDesigns.png">
+        <img src="./src/images/PortfolioPreview/NewUIDesigns.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/NewUIDesignTemplate3.png">
+        <img src="./src/images/PortfolioPreview/NewUIDesignTemplate3.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/Pause.png">
+        <img src="./src/images/PortfolioPreview/Pause.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/Player Selection.png">
+        <img src="./src/images/PortfolioPreview/Player Selection.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/RyanUIConcept.png">
+        <img src="./src/images/PortfolioPreview/RyanUIConcept.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/RyanUIConceptShop.png">
+        <img src="./src/images/PortfolioPreview/RyanUIConceptShop.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/Samplework1.png">
+        <img src="./src/images/PortfolioPreview/Samplework1.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/Samplework3.png">
+        <img src="./src/images/PortfolioPreview/Samplework3.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+    
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/Start screen.png">
+        <img src="./src/images/PortfolioPreview/Start screen.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+    
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/TokensFrame.png">
+        <img src="./src/images/PortfolioPreview/TokensFrame.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+    
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/Worlds.png">
+        <img src="./src/images/PortfolioPreview/Worlds.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/Galatic Border Roleplay Main.png">
+        <img src="./src/images/PortfolioPreview/Galatic Border Roleplay Main.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+    <div class="UIDItem">
+      <a target="_blank" href="./src/images/PortfolioPreview/Kuromiss Clicker.png">
+        <img src="./src/images/PortfolioPreview/Kuromiss Clicker.png" alt="Admin Panel Main" width="480" height="270">
+      </a>
+    </div>
+
+  </div>
+</div>
+
+</section>
+
+
+<section>
+<div class="Pricing">
+  <div class="PricingHeader">Provide The Following Services With Confidence</div>
+  <div class="PricingSubtittle1">Create, imagine and bring your projects to reality</div>
+  <div class="PricingSubtittle2">All at a low price and without hidden charges</div>
+</div>
+
+<div class="PricingOptions">
+  <a href='https://discordapp.com/users/525119218769723392' class="button3" style="text-decoration: none;">UI / UX</a>
+  <a href='https://discordapp.com/users/525119218769723392' class="button3" style="text-decoration: none;">Graphic Arts</a>
+  <a href='https://discordapp.com/users/525119218769723392' class="button3" style="text-decoration: none;">Scripting</a>
+  <a href='https://discordapp.com/users/525119218769723392' class="button3" style="text-decoration: none;">3D Modeling</a>
+  <a href='https://discordapp.com/users/525119218769723392' class="button3" style="text-decoration: none;">Building</a>
+  <a href='https://discordapp.com/users/525119218769723392' class="button3" style="text-decoration: none;">UGC</a>
+</div>
+
+<div class="UIPricing">
+  <!-- group: PricePlans -->
+<div class="group price-plans-0e136d421cda">
+  <!-- group: Premium Plan -->
+  <div class="group premium-pl-0dcdeea7ebd3">
+    <!-- rect: Rectangle -->
+    <div class="shape rect rectangle-0dc9d3d5770f">
+      <svg width="615" xmlns="http://www.w3.org/2000/svg" height="929" id="screenshot-8a9eed42-5789-8071-8007-0dc9d3d5770f" viewBox="-361 -60 615 929" style="-webkit-print-color-adjust::exact" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1">
+        <g id="shape-8a9eed42-5789-8071-8007-0dc9d3d5770f">
+          <defs>
+            <filter id="filter-render-1755" x="-0.2782608695652174" y="-0.15609756097560978" width="1.5913043478260869" height="1.3853658536585367" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+              <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="filter_8a9eed42-5789-8071-8007-0dcab5dea646"></feMorphology>
+              <feOffset dx="4" dy="15"></feOffset>
+              <feGaussianBlur stdDeviation="12.5"></feGaussianBlur>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"></feColorMatrix>
+              <feBlend mode="normal" in2="BackgroundImageFix" result="filter_8a9eed42-5789-8071-8007-0dcab5dea646"></feBlend>
+              <feBlend mode="normal" in="SourceGraphic" in2="filter_8a9eed42-5789-8071-8007-0dcab5dea646" result="shape"></feBlend>
+            </filter>
+            <filter id="filter-shadow-render-1755" x="-0.2782608695652174" y="-0.15609756097560978" width="1.5913043478260869" height="1.3853658536585367" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+              <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="filter_8a9eed42-5789-8071-8007-0dcab5dea646"></feMorphology>
+              <feOffset dx="4" dy="15"></feOffset>
+              <feGaussianBlur stdDeviation="12.5"></feGaussianBlur>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"></feColorMatrix>
+              <feBlend mode="normal" in2="BackgroundImageFix" result="filter_8a9eed42-5789-8071-8007-0dcab5dea646"></feBlend>
+              <feBlend mode="normal" in="SourceGraphic" in2="filter_8a9eed42-5789-8071-8007-0dcab5dea646" result="shape"></feBlend>
+            </filter>
+            <linearGradient id="fill-color-gradient-render-1755-0" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="">
+              <stop offset="0" stop-color="#ffef05" stop-opacity="1"></stop>
+              <stop offset="0.28" stop-color="#151515" stop-opacity="0.8724893091193626"></stop>
+            </linearGradient>
+            <pattern patternUnits="userSpaceOnUse" x="-238" y="52" width="345" height="614.9999999999999" id="fill-0-render-1755">
+              <g>
+                <rect width="345" height="614.9999999999999" style="fill:url(#fill-color-gradient-render-1755-0)"></rect>
+              </g>
+            </pattern>
+          </defs>
+          <g class="fills" id="fills-8a9eed42-5789-8071-8007-0dc9d3d5770f">
+            <rect rx="25" ry="25" x="-238" y="52" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="345" height="614.9999999999999" filter="url(#filter-render-1755)" fill="url(#fill-0-render-1755)"></rect>
+          </g>
+          <g id="strokes-8a9eed42-5789-8071-8007-0e156f9f6ba5-8a9eed42-5789-8071-8007-0dc9d3d5770f" class="strokes">
+            <g class="outer-stroke-shape">
+              <defs>
+                <linearGradient id="stroke-color-gradient-render-1755-1" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="">
+                  <stop offset="0" stop-color="#f4ff61" stop-opacity="1"></stop>
+                  <stop offset="0.47" stop-color="#000000" stop-opacity="1"></stop>
+                </linearGradient>
+                <mask id="outer-stroke-render-1755-8a9eed42-5789-8071-8007-0dc9d3d5770f-1" x="-240.82842712474618" y="49.17157287525381" width="350.65685424949237" height="620.6568542494923" maskUnits="userSpaceOnUse">
+                  <use href="#stroke-shape-render-1755-8a9eed42-5789-8071-8007-0dc9d3d5770f-1" style="fill:none;stroke:white;stroke-width:4"></use>
+                  <use href="#stroke-shape-render-1755-8a9eed42-5789-8071-8007-0dc9d3d5770f-1" style="fill:black;stroke:none"></use>
+                </mask>
+                <rect rx="25" ry="25" x="-238" y="52" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="345" height="614.9999999999999" id="stroke-shape-render-1755-8a9eed42-5789-8071-8007-0dc9d3d5770f-1"></rect>
+              </defs>
+              <use href="#stroke-shape-render-1755-8a9eed42-5789-8071-8007-0dc9d3d5770f-1" mask="url(#outer-stroke-render-1755-8a9eed42-5789-8071-8007-0dc9d3d5770f-1)" style="fill:none;stroke-width:4;stroke:url(#stroke-color-gradient-render-1755-1)"></use>
+              <use href="#stroke-shape-render-1755-8a9eed42-5789-8071-8007-0dc9d3d5770f-1" style="fill:none;fill-opacity:none;stroke-width:2;stroke:none"></use>
+            </g>
+            <g class="inner-stroke-shape" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)">
+              <defs>
+                <clipPath id="inner-stroke-render-1755-8a9eed42-5789-8071-8007-0dc9d3d5770f-0">
+                  <use href="#stroke-shape-render-1755-8a9eed42-5789-8071-8007-0dc9d3d5770f-0"></use>
+                </clipPath>
+                <rect rx="25" ry="25" x="-238" y="52" width="345" height="614.9999999999999" style="fill:none;fill-opacity:none;stroke-width:2;stroke:#fffef4;stroke-opacity:0.25" id="stroke-shape-render-1755-8a9eed42-5789-8071-8007-0dc9d3d5770f-0"></rect>
+              </defs>
+              <use href="#stroke-shape-render-1755-8a9eed42-5789-8071-8007-0dc9d3d5770f-0" clip-path="url(&#x27;#inner-stroke-render-1755-8a9eed42-5789-8071-8007-0dc9d3d5770f-0&#x27;)"></use>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <!-- group: Explain -->
+    <div class="group explain-0de0e9dbabbf">
+      <!-- text: - No previous concept
+
+ -->
+      <div class="shape text no-previ-0dddfa7e2855">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0dddfa7e2855" data-x="-214" data-y="402">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- No previous concept</span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-1" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-1-text-0"> </span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-2" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-2-text-0"> </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: - Scale for all devices
+ -->
+      <div class="shape text scale-fo-0dde2ae207c2">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0dde2ae207c2" data-x="-214" data-y="442">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- Scale for all devices</span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-1" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-1-text-0"> </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: - Fast deliver -->
+      <div class="shape text fast-del-0dde4ff2dff5">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0dde4ff2dff5" data-x="-214" data-y="482">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- Fast deliver</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: - Direct comunication -->
+      <div class="shape text direct-c-0dde6fa239cd">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0dde6fa239cd" data-x="-214" data-y="522">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- Direct comunication</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: - No corrections after approval -->
+      <div class="shape text no-corre-0dde82de0b9d">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0dde82de0b9d" data-x="-214" data-y="563">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- No corrections after approval</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- group: FrameDiv -->
+    <div class="group frame-div-0dd1bf6a5eb7">
+      <!-- rect: Rectangle -->
+      <div class="shape rect rectangle-0dcc35cf9f2d">
+      </div>
+      <!-- rect: Button -->
+      <div class="shape rect button-0dcff2fa58b7">
+      </div>
+      <!-- text: Get started
+ -->
+      <div class="shape text get-starte-0dd093978794">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0dd093978794" data-x="-105" data-y="315">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">Get started</span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-1" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-1-text-0"> </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: Basic -->
+      <div class="shape text basic-0dcdf6d438ab">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0dcdf6d438ab" data-x="-218" data-y="72">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">Basic</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: $10 per frame -->
+      <div class="shape text c-10-per-fr-0dcf59ee924e">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0dcf59ee924e" data-x="-218" data-y="212">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">$10</span><span class="text-node root-0-paragraph-set-0-paragraph-0-text-1"> </span><span class="text-node root-0-paragraph-set-0-paragraph-0-text-2">per frame</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: Basic collaboration tools built specifically for small projects or low budgets
+ -->
+      <div class="shape text basic-coll-0dce9d4f52b5">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0dce9d4f52b5" data-x="-218" data-y="122">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">Basic collaboration tools built specifically for small projects or low budgets</span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-1" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-1-text-0"> </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: per frame / screen, for basic styles
+
+ -->
+      <div class="shape text per-frame-0dcfbbba6a11">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0dcfbbba6a11" data-x="-218" data-y="262">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">per frame / screen, for basic styles</span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-1" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-1-text-0"> </span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-2" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-2-text-0"> </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- group: Standard Plan -->
+  <div class="group standard-p-0de17db13c74">
+    <!-- rect: Rectangle -->
+    <div class="shape rect rectangle-0de17db13c75">
+      <svg width="615" xmlns="http://www.w3.org/2000/svg" height="929" id="screenshot-8a9eed42-5789-8071-8007-0de17db13c75" viewBox="141 -57 615 929" style="-webkit-print-color-adjust::exact" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1">
+        <g id="shape-8a9eed42-5789-8071-8007-0de17db13c75">
+          <defs>
+            <filter id="filter-render-1756" x="-0.2782608695652174" y="-0.15609756097560978" width="1.5913043478260869" height="1.3853658536585367" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+              <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="filter_8a9eed42-5789-8071-8007-0dcab5dea646"></feMorphology>
+              <feOffset dx="4" dy="15"></feOffset>
+              <feGaussianBlur stdDeviation="12.5"></feGaussianBlur>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"></feColorMatrix>
+              <feBlend mode="normal" in2="BackgroundImageFix" result="filter_8a9eed42-5789-8071-8007-0dcab5dea646"></feBlend>
+              <feBlend mode="normal" in="SourceGraphic" in2="filter_8a9eed42-5789-8071-8007-0dcab5dea646" result="shape"></feBlend>
+            </filter>
+            <filter id="filter-shadow-render-1756" x="-0.2782608695652174" y="-0.15609756097560978" width="1.5913043478260869" height="1.3853658536585367" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+              <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="filter_8a9eed42-5789-8071-8007-0dcab5dea646"></feMorphology>
+              <feOffset dx="4" dy="15"></feOffset>
+              <feGaussianBlur stdDeviation="12.5"></feGaussianBlur>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"></feColorMatrix>
+              <feBlend mode="normal" in2="BackgroundImageFix" result="filter_8a9eed42-5789-8071-8007-0dcab5dea646"></feBlend>
+              <feBlend mode="normal" in="SourceGraphic" in2="filter_8a9eed42-5789-8071-8007-0dcab5dea646" result="shape"></feBlend>
+            </filter>
+            <linearGradient id="fill-color-gradient-render-1756-0" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="">
+              <stop offset="0" stop-color="#ffef05" stop-opacity="1"></stop>
+              <stop offset="0.28" stop-color="#151515" stop-opacity="0.8724893091193626"></stop>
+            </linearGradient>
+            <pattern patternUnits="userSpaceOnUse" x="264" y="55" width="345" height="614.9999999999999" id="fill-0-render-1756">
+              <g>
+                <rect width="345" height="614.9999999999999" style="fill:url(#fill-color-gradient-render-1756-0)"></rect>
+              </g>
+            </pattern>
+          </defs>
+          <g class="fills" id="fills-8a9eed42-5789-8071-8007-0de17db13c75">
+            <rect rx="25" ry="25" x="264" y="55" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="345" height="614.9999999999999" filter="url(#filter-render-1756)" fill="url(#fill-0-render-1756)"></rect>
+          </g>
+          <g id="strokes-8a9eed42-5789-8071-8007-0e156fa03c51-8a9eed42-5789-8071-8007-0de17db13c75" class="strokes">
+            <g class="outer-stroke-shape">
+              <defs>
+                <linearGradient id="stroke-color-gradient-render-1756-1" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="">
+                  <stop offset="0" stop-color="#f4ff61" stop-opacity="1"></stop>
+                  <stop offset="0.47" stop-color="#000000" stop-opacity="1"></stop>
+                </linearGradient>
+                <mask id="outer-stroke-render-1756-8a9eed42-5789-8071-8007-0de17db13c75-1" x="261.1715728752538" y="52.17157287525381" width="350.65685424949237" height="620.6568542494923" maskUnits="userSpaceOnUse">
+                  <use href="#stroke-shape-render-1756-8a9eed42-5789-8071-8007-0de17db13c75-1" style="fill:none;stroke:white;stroke-width:4"></use>
+                  <use href="#stroke-shape-render-1756-8a9eed42-5789-8071-8007-0de17db13c75-1" style="fill:black;stroke:none"></use>
+                </mask>
+                <rect rx="25" ry="25" x="264" y="55" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="345" height="614.9999999999999" id="stroke-shape-render-1756-8a9eed42-5789-8071-8007-0de17db13c75-1"></rect>
+              </defs>
+              <use href="#stroke-shape-render-1756-8a9eed42-5789-8071-8007-0de17db13c75-1" mask="url(#outer-stroke-render-1756-8a9eed42-5789-8071-8007-0de17db13c75-1)" style="fill:none;stroke-width:4;stroke:url(#stroke-color-gradient-render-1756-1)"></use>
+              <use href="#stroke-shape-render-1756-8a9eed42-5789-8071-8007-0de17db13c75-1" style="fill:none;fill-opacity:none;stroke-width:2;stroke:none"></use>
+            </g>
+            <g class="inner-stroke-shape" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)">
+              <defs>
+                <clipPath id="inner-stroke-render-1756-8a9eed42-5789-8071-8007-0de17db13c75-0">
+                  <use href="#stroke-shape-render-1756-8a9eed42-5789-8071-8007-0de17db13c75-0"></use>
+                </clipPath>
+                <rect rx="25" ry="25" x="264" y="55" width="345" height="614.9999999999999" style="fill:none;fill-opacity:none;stroke-width:2;stroke:#fffef4;stroke-opacity:0.25" id="stroke-shape-render-1756-8a9eed42-5789-8071-8007-0de17db13c75-0"></rect>
+              </defs>
+              <use href="#stroke-shape-render-1756-8a9eed42-5789-8071-8007-0de17db13c75-0" clip-path="url(&#x27;#inner-stroke-render-1756-8a9eed42-5789-8071-8007-0de17db13c75-0&#x27;)"></use>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <!-- group: Explain -->
+    <div class="group explain-0e12a8ced7be">
+      <!-- text: - Previous concept .PSD .FIG or .Penpot
+
+ -->
+      <div class="shape text previous-0e12a8ced7bf">
+        <div class="text-node-html" id="html-text-node-f8ad87e8-910f-807d-8007-0e12a8ced7bf" data-x="288" data-y="405">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- Previous concept .PSD .FIG or .Penpot</span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-1" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-1-text-0"> </span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-2" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-2-text-0"> </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: - Scale for all devices
+ -->
+      <div class="shape text scale-fo-0e12a8ced7c0">
+        <div class="text-node-html" id="html-text-node-f8ad87e8-910f-807d-8007-0e12a8ced7c0" data-x="288" data-y="445">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- Scale for all devices</span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-1" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-1-text-0"> </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: - Fast deliver -->
+      <div class="shape text fast-del-0e12a8ced7c1">
+        <div class="text-node-html" id="html-text-node-f8ad87e8-910f-807d-8007-0e12a8ced7c1" data-x="288" data-y="485">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- Fast deliver</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: - Direct comunication -->
+      <div class="shape text direct-c-0e12a8ced7c2">
+        <div class="text-node-html" id="html-text-node-f8ad87e8-910f-807d-8007-0e12a8ced7c2" data-x="288" data-y="525">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- Direct comunication</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: - Corrections after approval -->
+      <div class="shape text correcti-0e12a8ced7c3">
+        <div class="text-node-html" id="html-text-node-f8ad87e8-910f-807d-8007-0e12a8ced7c3" data-x="288" data-y="566">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- Corrections after approval</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: - Days 30 quaranty for corrections -->
+      <div class="shape text days-30-0e12a8ced7c4">
+        <div class="text-node-html" id="html-text-node-f8ad87e8-910f-807d-8007-0e12a8ced7c4" data-x="288" data-y="601">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- 30 Days quaranty for corrections</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- group: FrameDiv -->
+    <div class="group frame-div-0de17db13c77">
+      <!-- rect: Rectangle -->
+      <div class="shape rect rectangle-0de17db13c7d">
+      </div>
+      <!-- rect: Button -->
+      <div class="shape rect button-0de17db13c7e">
+      </div>
+      <!-- text: Get started
+ -->
+      <div class="shape text get-starte-0de17db13c7f">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0de17db13c7f" data-x="397" data-y="318">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">Get started</span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-1" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-1-text-0"> </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: Standard -->
+      <div class="shape text standard-0de17db13c80">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0de17db13c80" data-x="284" data-y="75">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">Standard</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: $15 per frame -->
+      <div class="shape text c-15-per-fr-0de17db13c81">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0de17db13c81" data-x="284" data-y="215">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">$15</span><span class="text-node root-0-paragraph-set-0-paragraph-0-text-1"> </span><span class="text-node root-0-paragraph-set-0-paragraph-0-text-2">per frame</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: Basic collaboration tools built specifically for small projects or low budgets
+ -->
+      <div class="shape text basic-coll-0de17db13c82">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0de17db13c82" data-x="284" data-y="125">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">Basic collaboration tools built specifically for small projects or low budgets</span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-1" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-1-text-0"> </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: per frame / screen, for full design
+
+ -->
+      <div class="shape text per-frame-0de17db13c83">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0de17db13c83" data-x="284" data-y="265">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">per frame / screen, for full design</span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-1" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-1-text-0"> </span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-2" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-2-text-0"> </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- rect: Rectangle -->
+      <div class="shape rect rectangle-0e1197c80d4a">
+      </div>
+      <!-- text: Popular -->
+      <div class="shape text popular-0e11b9c3abcc">
+        <div class="text-node-html" id="html-text-node-f8ad87e8-910f-807d-8007-0e11b9c3abcc" data-x="496" data-y="81">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">Popular</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- group: Basic Plan -->
+  <div class="group basic-plan-0de18314e2be">
+    <!-- rect: Rectangle -->
+    <div class="shape rect rectangle-0de18314e2bf">
+      <svg width="615" xmlns="http://www.w3.org/2000/svg" height="929" id="screenshot-8a9eed42-5789-8071-8007-0de18314e2bf" viewBox="643 -54 615 929" style="-webkit-print-color-adjust::exact" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1">
+        <g id="shape-8a9eed42-5789-8071-8007-0de18314e2bf">
+          <defs>
+            <filter id="filter-render-1757" x="-0.2782608695652174" y="-0.15609756097560978" width="1.5913043478260869" height="1.3853658536585367" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+              <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="filter_8a9eed42-5789-8071-8007-0dcab5dea646"></feMorphology>
+              <feOffset dx="4" dy="15"></feOffset>
+              <feGaussianBlur stdDeviation="12.5"></feGaussianBlur>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"></feColorMatrix>
+              <feBlend mode="normal" in2="BackgroundImageFix" result="filter_8a9eed42-5789-8071-8007-0dcab5dea646"></feBlend>
+              <feBlend mode="normal" in="SourceGraphic" in2="filter_8a9eed42-5789-8071-8007-0dcab5dea646" result="shape"></feBlend>
+            </filter>
+            <filter id="filter-shadow-render-1757" x="-0.2782608695652174" y="-0.15609756097560978" width="1.5913043478260869" height="1.3853658536585367" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+              <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="filter_8a9eed42-5789-8071-8007-0dcab5dea646"></feMorphology>
+              <feOffset dx="4" dy="15"></feOffset>
+              <feGaussianBlur stdDeviation="12.5"></feGaussianBlur>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"></feColorMatrix>
+              <feBlend mode="normal" in2="BackgroundImageFix" result="filter_8a9eed42-5789-8071-8007-0dcab5dea646"></feBlend>
+              <feBlend mode="normal" in="SourceGraphic" in2="filter_8a9eed42-5789-8071-8007-0dcab5dea646" result="shape"></feBlend>
+            </filter>
+            <linearGradient id="fill-color-gradient-render-1757-0" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="">
+              <stop offset="0" stop-color="#ffef05" stop-opacity="1"></stop>
+              <stop offset="0.28" stop-color="#151515" stop-opacity="0.8724893091193626"></stop>
+            </linearGradient>
+            <pattern patternUnits="userSpaceOnUse" x="766" y="58" width="345" height="614.9999999999999" id="fill-0-render-1757">
+              <g>
+                <rect width="345" height="614.9999999999999" style="fill:url(#fill-color-gradient-render-1757-0)"></rect>
+              </g>
+            </pattern>
+          </defs>
+          <g class="fills" id="fills-8a9eed42-5789-8071-8007-0de18314e2bf">
+            <rect rx="25" ry="25" x="766" y="58" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="345" height="614.9999999999999" filter="url(#filter-render-1757)" fill="url(#fill-0-render-1757)"></rect>
+          </g>
+          <g id="strokes-8a9eed42-5789-8071-8007-0e156fa10468-8a9eed42-5789-8071-8007-0de18314e2bf" class="strokes">
+            <g class="outer-stroke-shape">
+              <defs>
+                <linearGradient id="stroke-color-gradient-render-1757-1" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="">
+                  <stop offset="0" stop-color="#f4ff61" stop-opacity="1"></stop>
+                  <stop offset="0.47" stop-color="#000000" stop-opacity="1"></stop>
+                </linearGradient>
+                <mask id="outer-stroke-render-1757-8a9eed42-5789-8071-8007-0de18314e2bf-1" x="763.1715728752538" y="55.17157287525381" width="350.65685424949237" height="620.6568542494923" maskUnits="userSpaceOnUse">
+                  <use href="#stroke-shape-render-1757-8a9eed42-5789-8071-8007-0de18314e2bf-1" style="fill:none;stroke:white;stroke-width:4"></use>
+                  <use href="#stroke-shape-render-1757-8a9eed42-5789-8071-8007-0de18314e2bf-1" style="fill:black;stroke:none"></use>
+                </mask>
+                <rect rx="25" ry="25" x="766" y="58" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="345" height="614.9999999999999" id="stroke-shape-render-1757-8a9eed42-5789-8071-8007-0de18314e2bf-1"></rect>
+              </defs>
+              <use href="#stroke-shape-render-1757-8a9eed42-5789-8071-8007-0de18314e2bf-1" mask="url(#outer-stroke-render-1757-8a9eed42-5789-8071-8007-0de18314e2bf-1)" style="fill:none;stroke-width:4;stroke:url(#stroke-color-gradient-render-1757-1)"></use>
+              <use href="#stroke-shape-render-1757-8a9eed42-5789-8071-8007-0de18314e2bf-1" style="fill:none;fill-opacity:none;stroke-width:2;stroke:none"></use>
+            </g>
+            <g class="inner-stroke-shape" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)">
+              <defs>
+                <clipPath id="inner-stroke-render-1757-8a9eed42-5789-8071-8007-0de18314e2bf-0">
+                  <use href="#stroke-shape-render-1757-8a9eed42-5789-8071-8007-0de18314e2bf-0"></use>
+                </clipPath>
+                <rect rx="25" ry="25" x="766" y="58" width="345" height="614.9999999999999" style="fill:none;fill-opacity:none;stroke-width:2;stroke:#fffef4;stroke-opacity:0.25" id="stroke-shape-render-1757-8a9eed42-5789-8071-8007-0de18314e2bf-0"></rect>
+              </defs>
+              <use href="#stroke-shape-render-1757-8a9eed42-5789-8071-8007-0de18314e2bf-0" clip-path="url(&#x27;#inner-stroke-render-1757-8a9eed42-5789-8071-8007-0de18314e2bf-0&#x27;)"></use>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <!-- group: Explain -->
+    <div class="group explain-0de17db13c76">
+      <!-- text: - Previous concept .PSD .FIG or .Penpot
+
+ -->
+      <div class="shape text previous-0de17db13c78">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0de17db13c78" data-x="789" data-y="405">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- Previous concept .PSD .FIG or .Penpot</span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-1" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-1-text-0"> </span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-2" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-2-text-0"> </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: - Scale for all devices
+ -->
+      <div class="shape text scale-fo-0de17db13c79">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0de17db13c79" data-x="789" data-y="445">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- Scale for all devices</span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-1" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-1-text-0"> </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: - Fast deliver & work with teams -->
+      <div class="shape text fast-del-0de17db13c7a">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0de17db13c7a" data-x="789" data-y="485">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- Fast deliver &amp; work with teams</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: - Direct comunication & dev livestreaming -->
+      <div class="shape text direct-c-0de17db13c7b">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0de17db13c7b" data-x="789" data-y="525">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- Direct comunication &amp; dev livestreaming</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: - Corrections after approval -->
+      <div class="shape text correcti-0de17db13c7c">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0de17db13c7c" data-x="789" data-y="566">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- Corrections after approval</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: - Lifetime quaranty for corrections -->
+      <div class="shape text lifetime-0e128594c645">
+        <div class="text-node-html" id="html-text-node-f8ad87e8-910f-807d-8007-0e128594c645" data-x="789" data-y="601">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">- Lifetime quaranty for corrections</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- group: FrameDiv -->
+    <div class="group frame-div-0de18314e2c1">
+      <!-- rect: Rectangle -->
+      <div class="shape rect rectangle-0de18314e2c7">
+      </div>
+      <!-- rect: Button -->
+      <div class="shape rect button-0de18314e2c8">
+      </div>
+      <!-- text: Get started
+ -->
+      <div class="shape text get-starte-0de18314e2c9">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0de18314e2c9" data-x="899" data-y="321">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">Get started</span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-1" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-1-text-0"> </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: Premium -->
+      <div class="shape text premium-0de18314e2ca">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0de18314e2ca" data-x="786" data-y="78">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">Premium</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: $20 per frame -->
+      <div class="shape text c-20-per-fr-0de18314e2cb">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0de18314e2cb" data-x="786" data-y="218">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">$20</span><span class="text-node root-0-paragraph-set-0-paragraph-0-text-1"> </span><span class="text-node root-0-paragraph-set-0-paragraph-0-text-2">per frame</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: Basic collaboration tools built specifically for small projects or low budgets
+ -->
+      <div class="shape text basic-coll-0de18314e2cc">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0de18314e2cc" data-x="786" data-y="128">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">Basic collaboration tools built specifically for small projects or low budgets</span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-1" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-1-text-0"> </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- text: per frame / screen, for complex designs
+
+ -->
+      <div class="shape text per-frame-0de18314e2cd">
+        <div class="text-node-html" id="html-text-node-8a9eed42-5789-8071-8007-0de18314e2cd" data-x="786" data-y="268">
+          <div class="root rich-text root-0" xmlns="http://www.w3.org/1999/xhtml">
+            <div class="paragraph-set root-0-paragraph-set-0">
+              <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0">per frame / screen, for complex designs</span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-1" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-1-text-0"> </span></p>
+              <p class="paragraph root-0-paragraph-set-0-paragraph-2" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-2-text-0"> </span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</section>
+
+  </main>
+
+  <script src="./src/js/swiper.js"></script>
 </body>
 </html>
+
