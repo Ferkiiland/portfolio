@@ -1437,3 +1437,35 @@ body {
     scroll-snap-align: start;
   }
 }
+
+
+@keyframes pricingCardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+#pricing-catalog .pricing-card {
+  animation: pricingCardFadeIn 420ms cubic-bezier(.2,.75,.25,1) both;
+  will-change: opacity, transform;
+}
+
+#pricing-catalog .pricing-card:nth-child(2) {
+  animation-delay: 70ms;
+}
+
+#pricing-catalog .pricing-card:nth-child(3) {
+  animation-delay: 140ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #pricing-catalog .pricing-card {
+    animation: none;
+    will-change: auto;
+  }
+}
