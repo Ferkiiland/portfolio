@@ -22,6 +22,32 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentActiveButton = null;
   let isAnimating = false;
 
+  // Mantener cada panel dentro del espacio que queda bajo la navbar.
+  function fitSectionsToViewport() {
+    const navbar = document.querySelector('.navbar');
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    if (!viewportHeight) return;
+
+    const compact = window.matchMedia('(max-width: 700px)').matches;
+    const navbarTop = navbar ? (parseFloat(getComputedStyle(navbar).top) || 0) : 0;
+    const navbarBottom = navbar ? navbarTop + navbar.offsetHeight : 0;
+    const gap = compact ? 16 : 24;
+    const bottomSpace = compact ? 16 : 24;
+    const availableHeight = Math.max(220, viewportHeight - navbarBottom - gap - bottomSpace);
+    const preferredHeight = Math.min(compact ? 780 : 820, viewportHeight * (compact ? 0.84 : 0.82));
+    const panelHeight = Math.min(preferredHeight, availableHeight);
+    const panelCenter = navbarBottom + gap + panelHeight / 2;
+
+    Object.values(navConfig).forEach((selector) => {
+      const section = document.querySelector(selector);
+      if (!section) return;
+      section.style.top = `${panelCenter}px`;
+      section.style.height = `${panelHeight}px`;
+      section.style.minHeight = '0';
+      section.style.maxHeight = `${panelHeight}px`;
+    });
+  }
+
   // Inicializar todas las secciones
   function initializeSections() {
     Object.values(navConfig).forEach(selector => {
@@ -37,6 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
         section.style.zIndex = '10';
       }
     });
+
+    fitSectionsToViewport();
 
     // Remover color activo de todos los botones al inicio
     Object.values(navButtons).forEach(button => {
@@ -251,6 +279,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Inicializar
   initializeSections();
+  window.addEventListener('resize', fitSectionsToViewport);
+  window.visualViewport?.addEventListener('resize', fitSectionsToViewport);
 
   // Hacer funciones disponibles globalmente si es necesario
   window.closeCurrentSection = function() {
