@@ -6,8 +6,8 @@
         "name": "Props",
         "price": "Starting at $5",
         "description": "Props, models, pets, Map props, assets",
-        "includes": [.obj file]
-      },
+        "includes": [".obj file"]
+      }
     ]
   },
   {
