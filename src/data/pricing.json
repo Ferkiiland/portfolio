@@ -16,22 +16,31 @@
     "category": "Graphics",
     "tiers": [
       {
-        "name": "Basic",
-        "price": "",
-        "description": "",
-        "includes": []
+        "name": "Icons",
+        "price": "8",
+        "description": "- Vectorial Icons\n- Menu Icons\n- Hand Draw Icons",
+        "includes": [
+          ".Png file",
+          ".PSD or .AI File"
+        ]
       },
       {
-        "name": "Standard",
-        "price": "",
-        "description": "",
-        "includes": []
+        "name": "Logos",
+        "price": "15",
+        "description": "- Vectorial Logos\n- Text/Image Game logos\n- Brand/Studio Logos",
+        "includes": [
+          ".Png file",
+          ".PSD or .AI File",
+          ".Svg file"
+        ]
       },
       {
-        "name": "Premium",
-        "price": "",
-        "description": "",
-        "includes": []
+        "name": "Thumbnails / Game Icons",
+        "price": "25",
+        "description": "- CTR Thumbnails\n- HIgh detailed Thumbnails\n- Drawn Thumbnails",
+        "includes": [
+          ".Png file"
+        ]
       }
     ]
   },
