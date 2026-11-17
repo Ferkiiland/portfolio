@@ -330,13 +330,21 @@ document.addEventListener('DOMContentLoaded', function() {
     function loadPortfolioProjects() {
       const sectionContent = portfolioSection.querySelector('.section-content');
       if (!sectionContent) return;
-      
-      // Limpiar contenido previo
+
       sectionContent.innerHTML = '';
-      
-      // Crear contenedor del grid
+
+      const heading = document.createElement('h2');
+      heading.className = 'portfolio-title';
+      heading.textContent = 'Portfolio';
+
+      const filterBar = document.createElement('div');
+      filterBar.className = 'portfolio-filters';
+      filterBar.setAttribute('role', 'group');
+      filterBar.setAttribute('aria-label', 'Filter portfolio by category');
+
       const portfolioGrid = document.createElement('div');
       portfolioGrid.className = 'portfolio-grid';
+      portfolioGrid.setAttribute('aria-live', 'polite');
       portfolioGrid.style.cssText = `
         display: grid;
         grid-template-columns: repeat(${MAX_COLUMNS}, 1fr);
@@ -344,28 +352,96 @@ document.addEventListener('DOMContentLoaded', function() {
         padding: 10px;
         width: 100%;
       `;
-      
-      // Crear y agregar cada proyecto
-      PROJECTS.forEach((project, index) => {
-        const projectItem = createProjectItem(project, index);
-        portfolioGrid.appendChild(projectItem);
-      });
-      
-      sectionContent.appendChild(portfolioGrid);
-      
-      // Agregar estilos CSS dinámicamente
+
+      sectionContent.append(heading, filterBar, portfolioGrid);
       addPortfolioStyles();
+
+      const categories = [...new Set(PROJECTS.map(project => project.category).filter(Boolean))];
+      const filterOptions = [{ label: 'All', value: 'all' }, ...categories.map(category => ({
+        label: category,
+        value: category.toLowerCase().replace(/ & /g, '-').replace(/\\s+/g, '-')
+      }))];
+
+      const filterButtons = filterOptions.map(option => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'portfolio-filter';
+        button.textContent = option.label;
+        button.dataset.filter = option.value;
+        button.setAttribute('aria-pressed', 'false');
+        button.addEventListener('click', () => setPortfolioFilter(option.value));
+        filterBar.appendChild(button);
+        return button;
+      });
+
+      PROJECTS.forEach((project, index) => {
+        portfolioGrid.appendChild(createProjectItem(project, index));
+      });
+
+      let activeFilter = 'all';
+      let filterTimer = null;
+      let transitionId = 0;
+
+      function setPortfolioFilter(nextFilter, initial = false) {
+        if (!initial && nextFilter === activeFilter) return;
+        activeFilter = nextFilter;
+        transitionId += 1;
+        const currentTransition = transitionId;
+        if (filterTimer) window.clearTimeout(filterTimer);
+
+        filterButtons.forEach(button => {
+          const selected = button.dataset.filter === nextFilter;
+          button.classList.toggle('is-selected', selected);
+          button.setAttribute('aria-pressed', String(selected));
+        });
+
+        const items = [...portfolioGrid.children];
+        items.forEach(item => item.classList.remove('portfolio-card-enter', 'portfolio-card-exit'));
+
+        if (initial) {
+          let visibleIndex = 0;
+          items.forEach(item => {
+            const matches = nextFilter === 'all' || item.dataset.category === nextFilter;
+            item.style.display = matches ? '' : 'none';
+            if (matches) {
+              item.style.setProperty('--portfolio-enter-delay', `${Math.min(visibleIndex, 8) * 35}ms`);
+              item.classList.add('portfolio-card-enter');
+              visibleIndex += 1;
+            }
+          });
+          return;
+        }
+
+        items.forEach(item => {
+          if (item.style.display !== 'none') item.classList.add('portfolio-card-exit');
+        });
+
+        filterTimer = window.setTimeout(() => {
+          if (currentTransition !== transitionId) return;
+          let visibleIndex = 0;
+          items.forEach(item => {
+            const matches = nextFilter === 'all' || item.dataset.category === nextFilter;
+            item.style.display = matches ? '' : 'none';
+            if (matches) {
+              item.classList.remove('portfolio-card-exit', 'portfolio-card-enter');
+              void item.offsetWidth;
+              item.style.setProperty('--portfolio-enter-delay', `${Math.min(visibleIndex, 8) * 35}ms`);
+              item.classList.add('portfolio-card-enter');
+              visibleIndex += 1;
+            }
+          });
+        }, 190);
+      }
+
+      setPortfolioFilter('all', true);
     }
-    
+
     function createProjectItem(project, index) {
       const projectItem = document.createElement('div');
       projectItem.className = 'project-item';
       projectItem.setAttribute('data-category', project.category.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-'));
       projectItem.style.cssText = `
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-        transition-delay: ${index * 0.1}s;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         background: rgba(30, 30, 40, 0.6);
         border-radius: 12px;
         overflow: hidden;
@@ -522,12 +598,6 @@ document.addEventListener('DOMContentLoaded', function() {
       
       projectItem.appendChild(img);
       projectItem.appendChild(overlay);
-      
-      // Animar entrada
-      setTimeout(() => {
-        projectItem.style.opacity = '1';
-        projectItem.style.transform = 'translateY(0)';
-      }, 100 + (index * 50));
       
       return projectItem;
     }
