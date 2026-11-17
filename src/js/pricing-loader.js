@@ -54,7 +54,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       catalog.replaceChildren(makeText('p', 'pricing-empty', 'Add up to three service levels in pricing.json.'));
       return;
     }
-    catalog.replaceChildren(...cards);
+    const plans = document.createElement('div');
+    plans.className = 'pricing-plans';
+    plans.replaceChildren(...cards);
+    catalog.replaceChildren(plans);
   };
 
   try {
