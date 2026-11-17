@@ -1,0 +1,163 @@
+[
+  {
+    "category": "3D Modeling",
+    "tiers": [
+      {
+        "name": "Basic",
+        "price": "",
+        "description": "",
+        "includes": []
+      },
+      {
+        "name": "Standard",
+        "price": "",
+        "description": "",
+        "includes": []
+      },
+      {
+        "name": "Premium",
+        "price": "",
+        "description": "",
+        "includes": []
+      }
+    ]
+  },
+  {
+    "category": "Graphics",
+    "tiers": [
+      {
+        "name": "Basic",
+        "price": "",
+        "description": "",
+        "includes": []
+      },
+      {
+        "name": "Standard",
+        "price": "",
+        "description": "",
+        "includes": []
+      },
+      {
+        "name": "Premium",
+        "price": "",
+        "description": "",
+        "includes": []
+      }
+    ]
+  },
+  {
+    "category": "Builder",
+    "tiers": [
+      {
+        "name": "Basic",
+        "price": "",
+        "description": "",
+        "includes": []
+      },
+      {
+        "name": "Standard",
+        "price": "",
+        "description": "",
+        "includes": []
+      },
+      {
+        "name": "Premium",
+        "price": "",
+        "description": "",
+        "includes": []
+      }
+    ]
+  },
+  {
+    "category": "UI/UX",
+    "tiers": [
+      {
+        "name": "Basic",
+        "price": "",
+        "description": "",
+        "includes": []
+      },
+      {
+        "name": "Standard",
+        "price": "",
+        "description": "",
+        "includes": []
+      },
+      {
+        "name": "Premium",
+        "price": "",
+        "description": "",
+        "includes": []
+      }
+    ]
+  },
+  {
+    "category": "Clothing",
+    "tiers": [
+      {
+        "name": "Basic",
+        "price": "",
+        "description": "",
+        "includes": []
+      },
+      {
+        "name": "Standard",
+        "price": "",
+        "description": "",
+        "includes": []
+      },
+      {
+        "name": "Premium",
+        "price": "",
+        "description": "",
+        "includes": []
+      }
+    ]
+  },
+  {
+    "category": "UGC",
+    "tiers": [
+      {
+        "name": "Basic",
+        "price": "",
+        "description": "",
+        "includes": []
+      },
+      {
+        "name": "Standard",
+        "price": "",
+        "description": "",
+        "includes": []
+      },
+      {
+        "name": "Premium",
+        "price": "",
+        "description": "",
+        "includes": []
+      }
+    ]
+  },
+  {
+    "category": "Misc",
+    "tiers": [
+      {
+        "name": "Basic",
+        "price": "",
+        "description": "",
+        "includes": []
+      },
+      {
+        "name": "Standard",
+        "price": "",
+        "description": "",
+        "includes": []
+      },
+      {
+        "name": "Premium",
+        "price": "",
+        "description": "",
+        "includes": []
+      }
+    ]
+  }
+]
