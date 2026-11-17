@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const categories = [...new Set(PROJECTS.map(project => project.category).filter(Boolean))];
       const filterOptions = [{ label: 'All', value: 'all' }, ...categories.map(category => ({
         label: category,
-        value: category.toLowerCase().replace(/ & /g, '-').replace(/\\s+/g, '-')
+        value: category.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')
       }))];
 
       const filterButtons = filterOptions.map(option => {
@@ -376,6 +376,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
       PROJECTS.forEach((project, index) => {
         portfolioGrid.appendChild(createProjectItem(project, index));
+      });
+
+      portfolioGrid.addEventListener('animationend', (event) => {
+        if (event.animationName === 'portfolioCardFadeIn') {
+          event.target.classList.remove('portfolio-card-enter');
+          event.target.style.removeProperty('--portfolio-enter-delay');
+        }
       });
 
       let activeFilter = 'all';
