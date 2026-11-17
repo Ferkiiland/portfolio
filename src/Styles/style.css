@@ -1177,16 +1177,6 @@ body {
   }
 }
 
-@media (max-width: 700px) {
-  .Aboutme,
-  .ReviewsSection,
-  .PortfolioSection,
-  .WaitlistSection,
-  .PricingSection {
-    top: 53% !important;
-  }
-}
-
 .ReviewsSection .section-content .testimonials-empty {
   grid-column: 1 / -1;
   padding: 28px 20px;
@@ -1195,4 +1185,120 @@ body {
   color: rgba(255,255,255,.68);
   font-family: 'Fredoka', sans-serif;
   text-align: center;
+}
+
+
+/* Layout fixes: keep section panels below the navigation and reveal all content */
+.navbar ul {
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: visible;
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    overflow: visible;
+  }
+
+  .navbar ul {
+    display: flex;
+    flex: 1 0 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 4px 6px;
+    overflow: visible;
+  }
+
+  .navbar ul li {
+    flex: 0 1 auto;
+  }
+
+  .navbar ul li a {
+    padding: 6px clamp(4px, 1.5vw, 9px);
+    font-size: clamp(.7rem, 2.7vw, .82rem);
+  }
+
+  .Aboutme {
+    padding-bottom: max(28px, env(safe-area-inset-bottom));
+    scrollbar-width: thin;
+    scrollbar-color: rgba(88,101,242,.8) rgba(255,255,255,.08);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .Aboutme::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .Aboutme::-webkit-scrollbar-thumb {
+    border-radius: 99px;
+    background: rgba(88,101,242,.8);
+  }
+
+  .Aboutme .Technicalls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 8px 12px;
+  }
+
+  .Aboutme .Exp,
+  .Aboutme .Lang {
+    width: auto;
+    min-width: 0;
+    margin: 8px 0;
+    overflow-wrap: anywhere;
+  }
+
+  .Aboutme .Skills {
+    grid-column: 1 / -1;
+    min-width: 0;
+    margin: 8px 0;
+  }
+
+  .Aboutme .Icons {
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  .Aboutme .Icons img,
+  .Aboutme .Icons svg {
+    width: clamp(34px, 9vw, 42px);
+    height: clamp(34px, 9vw, 42px);
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar ul {
+    justify-content: center;
+    column-gap: 2px;
+  }
+
+  .navbar ul li a {
+    padding-right: 4px;
+    padding-left: 4px;
+    font-size: .68rem;
+  }
+}
+
+@media (max-height: 620px) {
+  .Aboutme {
+    padding: 16px 18px;
+    gap: 12px;
+  }
+
+  .Aboutme .info-container {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .AboutImage {
+    width: 96px;
+    height: 96px;
+  }
+
+  .Aboutme .info-container p {
+    font-size: .88rem;
+    line-height: 1.45;
+  }
 }
