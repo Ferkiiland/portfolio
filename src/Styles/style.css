@@ -1176,3 +1176,13 @@ body {
     transition-duration: .01ms !important;
   }
 }
+
+@media (max-width: 700px) {
+  .Aboutme,
+  .ReviewsSection,
+  .PortfolioSection,
+  .WaitlistSection,
+  .PricingSection {
+    top: 53% !important;
+  }
+}
