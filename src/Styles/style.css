@@ -1488,3 +1488,16 @@ body {
   height: 0 !important;
   background: transparent !important;
 }
+
+
+/* Center a category when it has only one pricing tier */
+#pricing-catalog .pricing-plans.has-single-plan {
+  grid-template-columns: minmax(min(100%, 300px), 380px);
+  justify-content: center;
+}
+
+@media (max-width: 700px) {
+  #pricing-catalog .pricing-plans.has-single-plan {
+    justify-content: center;
+  }
+}
