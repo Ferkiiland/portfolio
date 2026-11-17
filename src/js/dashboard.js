@@ -132,7 +132,7 @@
       if (response.status === 403) throw new Error('GitHub denegó el acceso. Confirma que el token tenga permiso Contents de lectura y escritura para este repositorio.');
       if (response.status === 404) throw new Error('No se encontró el repositorio o uno de los archivos. Revisa el acceso del token.');
       if (response.status === 409 || response.status === 422) throw new Error('GitHub no pudo guardar el cambio. El archivo pudo cambiar en otro lugar; desconéctate, vuelve a conectar e inténtalo otra vez.');
-      throw new Error(result.message || `GitHub request failed (${response.status}).`);
+      throw new Error(result.message || `Falló la solicitud a GitHub (${response.status}).`);
     }
     return result;
   };
@@ -253,7 +253,7 @@
       formGrid.append(
         field('Título del trabajo', current?.title || '', { field: 'title', required: true, placeholder: 'Nombre del trabajo' }),
         field('Categoría', current?.category || '', { field: 'category', required: true, placeholder: 'UI & UX, GFX, Modeling…', list: 'project-categories' }),
-        field('Year', current?.year || String(new Date().getFullYear()), { field: 'year', placeholder: '2026' })
+        field('Año', current?.year || String(new Date().getFullAño()), { field: 'year', placeholder: '2026' })
       );
 
       const dataList = element('datalist');
@@ -291,7 +291,7 @@
       });
 
       const saveButton = button(current ? 'Guardar trabajo' : 'Agregar trabajo', 'button button-primary', 'submit');
-      const deleteButton = current ? button('Delete project', 'button button-danger') : null;
+      const deleteButton = current ? button('Eliminar trabajo', 'button button-danger') : null;
       if (deleteButton) {
         deleteButton.addEventListener('click', async () => {
           if (!window.confirm(`¿Eliminar “${current.title}” del portfolio?`)) return;
@@ -621,7 +621,7 @@
     if (!token) return;
     setConnectError('');
     connectButton.disabled = true;
-    connectButton.textContent = 'Connecting…';
+    connectButton.textContent = 'Conectando…';
     try {
       await Promise.all(Object.keys(CONTENTS).map(loadJsonFile));
       connectPanel.hidden = true;
@@ -631,11 +631,11 @@
       showToast('Conexión lista. Ya puedes editar el contenido.');
     } catch (error) {
       token = '';
-      setConnectError(error.message || 'Could not connect to GitHub.');
+      setConnectError(error.message || 'No se pudo conectar con GitHub.');
     } finally {
       tokenInput.value = '';
       connectButton.disabled = false;
-      connectButton.textContent = 'Connect and load content';
+      connectButton.textContent = 'Conectar y cargar contenido';
     }
   });
 
