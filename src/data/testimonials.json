@@ -2,22 +2,22 @@
   {
     "category": "UI & UX",
     "rating": 5,
-    "quote": "Add the client's approved testimonial here. Keep it short and focused on the experience or result.",
-    "client": "Client name",
-    "project": "Project name"
+    "quote": "That’s a good deed that you’re doing 👍.",
+    "client": "Tdoit",
+    "project": "The CHI"
   },
   {
-    "category": "3D & Modeling",
+    "category": "Clothing Design",
     "rating": 5,
-    "quote": "Replace this with a real review from a client who has agreed to have it shown here.",
-    "client": "Client name",
-    "project": "Project name"
+    "quote": "I tried commissioning but nobody does it as good as you!",
+    "client": "Knightfall",
+    "project": "OC 2D Clothing"
   },
   {
-    "category": "Game assets",
+    "category": "UI & UX",
     "rating": 5,
-    "quote": "Add another approved client review here to show what it was like to work together.",
-    "client": "Client name",
-    "project": "Project name"
+    "quote": "All the UI is looking great!",
+    "client": "devs100",
+    "project": "Full game UI"
   }
 ]
