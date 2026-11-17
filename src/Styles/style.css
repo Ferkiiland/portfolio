@@ -1302,3 +1302,49 @@ body {
     line-height: 1.45;
   }
 }
+
+
+/* Editable service pricing cards */
+.PricingSection .pricing-content { padding: 4px 12px 28px; }
+.pricing-heading { margin: 0 auto 22px; text-align: center; }
+.pricing-eyebrow { display: inline-block; margin-bottom: 8px; color: #9da5ff; font-family: 'Fredoka', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: .2em; }
+.PricingSection .pricing-heading h2 { margin: 0 0 8px; font-size: clamp(2rem, 4vw, 3rem); text-shadow: 0 0 24px rgba(88,101,242,.3); }
+.PricingSection .pricing-heading p { color: rgba(255,255,255,.7); font-family: 'Fredoka', sans-serif; font-size: 1rem; line-height: 1.5; text-align: center; }
+.pricing-categories { position: relative; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0 auto 36px; }
+.pricing-category-link { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 7px 13px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; background: rgba(255,255,255,.055); color: rgba(255,255,255,.82); font-family: 'Fredoka', sans-serif; font-size: .82rem; text-decoration: none; transition: color 180ms ease, background 180ms ease, border-color 180ms ease; }
+.pricing-category-link:hover, .pricing-category-link:focus-visible { border-color: rgba(157,165,255,.65); background: rgba(88,101,242,.18); color: #fff; outline: none; }
+.pricing-category { margin: 0 0 42px; scroll-margin-top: 18px; }
+.pricing-category-title { margin: 0 0 16px; color: #fff; font-family: 'Days One', sans-serif; font-size: clamp(1.35rem, 2.5vw, 1.8rem); text-align: left; }
+.pricing-plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.pricing-card { position: relative; display: flex; min-width: 0; min-height: 320px; flex-direction: column; padding: clamp(18px, 2.2vw, 26px); overflow: hidden; border: 1px solid rgba(255,255,255,.16); border-radius: 18px; background: linear-gradient(145deg, rgba(24,24,30,.92), rgba(9,9,12,.84)); box-shadow: 0 14px 32px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.06); backdrop-filter: blur(16px); transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease; }
+.pricing-card:hover { transform: translateY(-4px); border-color: rgba(157,165,255,.5); box-shadow: 0 18px 34px rgba(0,0,0,.3), 0 0 22px rgba(88,101,242,.1); }
+.pricing-card-featured { border-color: rgba(157,165,255,.55); background: linear-gradient(155deg, rgba(36,38,64,.96), rgba(12,12,18,.9)); box-shadow: 0 14px 36px rgba(31,34,89,.24), inset 0 1px 0 rgba(255,255,255,.1); }
+.pricing-card-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.pricing-tier-name { margin: 0; color: #c7cbff; font-family: 'Fredoka', sans-serif; font-size: 1.15rem; font-weight: 600; }
+.pricing-price { margin: 18px 0 12px; color: #fff; font-family: 'Days One', sans-serif; font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.1; overflow-wrap: anywhere; }
+.PricingSection .pricing-description { min-height: 48px; margin: 0 0 20px; color: rgba(255,255,255,.68); font-family: 'Fredoka', sans-serif; font-size: .9rem; line-height: 1.5; text-align: left; }
+.pricing-includes-title { margin: 0 0 10px; color: rgba(255,255,255,.9); font-family: 'Fredoka', sans-serif; font-size: .9rem; font-weight: 600; }
+.pricing-includes { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.pricing-includes li { position: relative; padding-left: 24px; color: rgba(255,255,255,.83); font-family: 'Fredoka', sans-serif; font-size: .88rem; line-height: 1.45; overflow-wrap: anywhere; }
+.pricing-includes li::before { position: absolute; top: 0; left: 0; display: grid; width: 16px; height: 16px; place-items: center; border: 1px solid #9da5ff; border-radius: 50%; color: #c7cbff; content: '✓'; font-size: .65rem; }
+.pricing-includes li:only-child { color: rgba(255,255,255,.4); font-style: italic; }
+.PricingSection .pricing-empty { grid-column: 1 / -1; padding: 24px; color: rgba(255,255,255,.68); font-family: 'Fredoka', sans-serif; text-align: center; }
+@media (max-width: 900px) {
+  .pricing-plans { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pricing-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+@media (max-width: 700px) {
+  .PricingSection .pricing-content { padding: 0 2px 24px; }
+  .pricing-heading { margin-bottom: 18px; }
+  .pricing-categories { gap: 6px; margin-bottom: 28px; }
+  .pricing-category-link { min-height: 34px; padding: 6px 10px; font-size: .78rem; }
+  .pricing-category { margin-bottom: 32px; scroll-margin-top: 10px; }
+  .pricing-plans { grid-template-columns: 1fr; gap: 12px; }
+  .pricing-card:last-child:nth-child(odd) { grid-column: auto; }
+  .pricing-card { min-height: 0; padding: 20px; }
+  .pricing-price { margin: 12px 0 8px; font-size: 2rem; }
+  .PricingSection .pricing-description { min-height: 0; margin-bottom: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pricing-card, .pricing-category-link { transition: none; }
+}
