@@ -1,0 +1,23 @@
+[
+  {
+    "category": "UI & UX",
+    "rating": 5,
+    "quote": "Add the client's approved testimonial here. Keep it short and focused on the experience or result.",
+    "client": "Client name",
+    "project": "Project name"
+  },
+  {
+    "category": "3D & Modeling",
+    "rating": 5,
+    "quote": "Replace this with a real review from a client who has agreed to have it shown here.",
+    "client": "Client name",
+    "project": "Project name"
+  },
+  {
+    "category": "Game assets",
+    "rating": 5,
+    "quote": "Add another approved client review here to show what it was like to work together.",
+    "client": "Client name",
+    "project": "Project name"
+  }
+]
