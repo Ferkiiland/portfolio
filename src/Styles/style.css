@@ -1504,3 +1504,128 @@ body {
     justify-content: center;
   }
 }
+
+
+/* Portfolio category filters and card transitions */
+.PortfolioSection .portfolio-title {
+  margin: 0 0 18px;
+  color: #fff;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  text-align: center;
+  text-shadow: 0 0 22px rgba(88,101,242,.28);
+}
+
+.PortfolioSection .portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto 22px;
+  padding: 2px 0;
+}
+
+.PortfolioSection .portfolio-filter {
+  appearance: none;
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 13px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 999px;
+  background: rgba(255,255,255,.055);
+  color: rgba(255,255,255,.82);
+  cursor: pointer;
+  font-family: 'Fredoka', sans-serif;
+  font-size: .82rem;
+  line-height: 1.2;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.PortfolioSection .portfolio-filter:hover,
+.PortfolioSection .portfolio-filter:focus-visible {
+  border-color: rgba(157,165,255,.65);
+  background: rgba(88,101,242,.18);
+  color: #fff;
+  outline: none;
+}
+
+.PortfolioSection .portfolio-filter.is-selected {
+  border-color: rgba(157,165,255,.95);
+  background: linear-gradient(135deg, #5865f2, #737eff);
+  color: #fff;
+  box-shadow: 0 5px 18px rgba(88,101,242,.34), inset 0 1px 0 rgba(255,255,255,.2);
+}
+
+.PortfolioSection .portfolio-filter:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.PortfolioSection .portfolio-grid {
+  gap: 12px !important;
+}
+
+.PortfolioSection .project-item {
+  animation-fill-mode: both;
+  will-change: opacity, transform, filter;
+}
+
+.PortfolioSection .project-item.portfolio-card-exit {
+  animation: portfolioCardFadeOut 170ms ease-in both;
+  pointer-events: none;
+}
+
+.PortfolioSection .project-item.portfolio-card-enter {
+  animation: portfolioCardFadeIn 360ms cubic-bezier(.2,.75,.25,1) both;
+  animation-delay: var(--portfolio-enter-delay, 0ms);
+}
+
+@keyframes portfolioCardFadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(.975);
+    filter: blur(3px);
+  }
+}
+
+@keyframes portfolioCardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(.97);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@media (max-width: 700px) {
+  .PortfolioSection .portfolio-title {
+    margin-bottom: 14px;
+  }
+
+  .PortfolioSection .portfolio-filters {
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .PortfolioSection .portfolio-filter {
+    min-height: 33px;
+    padding: 6px 10px;
+    font-size: .78rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .PortfolioSection .project-item.portfolio-card-enter,
+  .PortfolioSection .project-item.portfolio-card-exit {
+    animation: none;
+  }
+
+  .PortfolioSection .portfolio-filter {
+    transition: none;
+  }
+}
