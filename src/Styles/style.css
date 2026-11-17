@@ -1348,3 +1348,39 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .pricing-card, .pricing-category-link { transition: none; }
 }
+
+
+/* Selected pricing category */
+.pricing-category-link {
+  appearance: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.pricing-category-link.is-selected {
+  border-color: rgba(157,165,255,.95);
+  background: linear-gradient(135deg, #5865f2, #737eff);
+  color: #fff;
+  box-shadow: 0 5px 18px rgba(88,101,242,.34), inset 0 1px 0 rgba(255,255,255,.2);
+}
+
+.pricing-category-link:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+#pricing-catalog {
+  min-width: 0;
+}
+
+#pricing-catalog .pricing-card-heading {
+  min-height: 28px;
+}
+
+#pricing-catalog .pricing-tier-name {
+  font-size: 1.25rem;
+}
+
+#pricing-catalog .pricing-price {
+  margin-top: 20px;
+}
