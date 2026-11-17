@@ -1498,6 +1498,9 @@ body {
 
 @media (max-width: 700px) {
   #pricing-catalog .pricing-plans.has-single-plan {
+    width: 100%;
+    grid-template-columns: none;
+    grid-auto-columns: min(82vw, 320px);
     justify-content: center;
   }
 }
