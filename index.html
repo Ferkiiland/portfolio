@@ -19,6 +19,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-stars@2.12.0/tsparticles.preset.stars.bundle.min.js"></script>
   <script src="./src/js/navigation.js"></script>
   <script src="./src/js/portfolio-loader.js"></script>
+  <script src="./src/js/pricing-loader.js"></script>
   <script src="./src/js/testimonials-loader.js"></script>
 </head>
 <body>  
@@ -154,11 +155,16 @@
   </div>
 </section>
 
-<!-- Sección Pricing (Prices) -->
+<!-- Service pricing -->
 <section class="PricingSection">
-  <div class="section-content">
-    <h2>Pricing</h2>
-    <p>Contenido de precios aquí...</p>
+  <div class="section-content pricing-content">
+    <div class="pricing-heading">
+      <span class="pricing-eyebrow">SERVICES &amp; PACKAGES</span>
+      <h2>Pricing</h2>
+      <p>Explore the service levels available for each category.</p>
+    </div>
+    <nav id="pricing-categories" class="pricing-categories" aria-label="Pricing categories"></nav>
+    <div id="pricing-catalog" class="pricing-catalog"></div>
   </div>
 </section>
 
