@@ -1393,3 +1393,47 @@ body {
     font-size: .78rem;
   }
 }
+
+
+/* Keep the three selected tier cards in one horizontal row */
+#pricing-catalog {
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+#pricing-catalog .pricing-plans {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+#pricing-catalog .pricing-card:last-child:nth-child(odd) {
+  grid-column: auto;
+}
+
+@media (max-width: 700px) {
+  #pricing-catalog {
+    overflow-x: auto;
+    padding: 4px 2px 12px;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(88,101,242,.75) rgba(255,255,255,.08);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #pricing-catalog .pricing-plans {
+    display: grid;
+    width: max-content;
+    min-width: 100%;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: min(82vw, 320px);
+    gap: 12px;
+  }
+
+  #pricing-catalog .pricing-card {
+    scroll-snap-align: start;
+  }
+}
