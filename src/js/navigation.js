@@ -135,8 +135,10 @@ document.addEventListener('DOMContentLoaded', function() {
   function openNewSection(sectionElement) {
     hideMainContent(() => {
       sectionElement.style.display = 'flex';
-      sectionElement.style.alignItems = 'center';
-      sectionElement.style.justifyContent = 'center';
+      const isAboutPanel = sectionElement.matches('.Aboutme');
+      sectionElement.style.alignItems = isAboutPanel ? 'stretch' : 'center';
+      sectionElement.style.justifyContent = isAboutPanel ? 'flex-start' : 'center';
+      if (isAboutPanel) sectionElement.scrollTop = 0;
       
       // Forzar reflow
       void sectionElement.offsetWidth;
