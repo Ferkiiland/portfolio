@@ -333,10 +333,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
       sectionContent.innerHTML = '';
 
-      const heading = document.createElement('h2');
-      heading.className = 'portfolio-title';
-      heading.textContent = 'Portfolio';
-
       const filterBar = document.createElement('div');
       filterBar.className = 'portfolio-filters';
       filterBar.setAttribute('role', 'group');
@@ -353,7 +349,7 @@ document.addEventListener('DOMContentLoaded', function() {
         width: 100%;
       `;
 
-      sectionContent.append(heading, filterBar, portfolioGrid);
+      sectionContent.append(filterBar, portfolioGrid);
       addPortfolioStyles();
 
       const categories = [...new Set(PROJECTS.map(project => project.category).filter(Boolean))];
