@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#090a10">
+  <title>Ferkii | Content dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/Styles/dashboard.css">
+  <script src="./src/js/dashboard.js" defer></script>
+</head>
+<body>
+  <div class="dashboard-shell">
+    <header class="dashboard-topbar">
+      <a class="dashboard-brand" href="./index.html" aria-label="Back to portfolio">
+        <span class="brand-mark">F</span>
+        <span>FERKII <small>STUDIO</small></span>
+      </a>
+      <div class="topbar-actions">
+        <a class="quiet-link" href="./index.html">View portfolio ↗</a>
+        <button class="button button-quiet" id="disconnect-button" type="button" hidden>Disconnect</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="connect-panel" id="connect-panel">
+        <div class="connect-icon" aria-hidden="true">✦</div>
+        <p class="eyebrow">PRIVATE CONTENT DASHBOARD</p>
+        <h1>Manage your portfolio</h1>
+        <p class="connect-copy">Edit projects, pricing and testimonials. Every save creates a commit in your GitHub repository and updates the live site after deployment.</p>
+
+        <form id="connect-form" class="connect-form">
+          <label for="github-token">Fine-grained GitHub token</label>
+          <input id="github-token" name="token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…" required>
+          <p class="field-help">The token is used only in this browser tab. It is never saved to local storage or sent anywhere except GitHub.</p>
+          <a class="token-help" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noreferrer">Create a fine-grained token ↗</a>
+          <div class="permission-note">
+            <strong>Required setup</strong>
+            <span>Select only <b>Ferkiiland/portfolio</b> and grant <b>Contents: Read and write</b>. No other permissions are needed.</span>
+          </div>
+          <button class="button button-primary" id="connect-button" type="submit">Connect and load content</button>
+          <p class="connect-error" id="connect-error" role="alert" hidden></p>
+        </form>
+      </section>
+
+      <section class="workspace" id="workspace" hidden>
+        <div class="welcome-row">
+          <div>
+            <p class="eyebrow">CONTENT STUDIO</p>
+            <h1>Your dashboard</h1>
+            <p>Changes are committed to <b>Ferkiiland/portfolio</b> on the <b>main</b> branch.</p>
+          </div>
+          <span class="connection-status"><span class="status-dot"></span> GitHub connected</span>
+        </div>
+
+        <nav class="workspace-tabs" role="tablist" aria-label="Content types">
+          <button class="workspace-tab is-active" type="button" role="tab" aria-selected="true" data-tab="portfolio">Portfolio</button>
+          <button class="workspace-tab" type="button" role="tab" aria-selected="false" data-tab="pricing">Pricing</button>
+          <button class="workspace-tab" type="button" role="tab" aria-selected="false" data-tab="testimonials">Testimonials</button>
+        </nav>
+
+        <div class="workspace-content" id="workspace-content"></div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+</body>
+</html>
