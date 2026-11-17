@@ -3,11 +3,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const categoryNav = document.querySelector('#pricing-categories');
   if (!catalog || !categoryNav) return;
 
-  const slugify = (value) => value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
-
   const makeText = (tag, className, value) => {
     const element = document.createElement(tag);
     if (className) element.className = className;
@@ -15,73 +10,77 @@ document.addEventListener('DOMContentLoaded', async () => {
     return element;
   };
 
+  const createTierCard = (tier, index) => {
+    const card = document.createElement('article');
+    card.className = 'pricing-card';
+    if (index === 1) card.classList.add('pricing-card-featured');
+
+    const cardHeading = document.createElement('div');
+    cardHeading.className = 'pricing-card-heading';
+    cardHeading.appendChild(makeText('h3', 'pricing-tier-name', tier.name || `Level ${index + 1}`));
+
+    const price = makeText('p', 'pricing-price', tier.price || 'Add price');
+    const description = makeText(
+      'p',
+      'pricing-description',
+      tier.description || 'Add a short description of this service level.'
+    );
+
+    const includesHeading = makeText('h4', 'pricing-includes-title', 'Includes');
+    const includes = document.createElement('ul');
+    includes.className = 'pricing-includes';
+    const items = Array.isArray(tier.includes) ? tier.includes : [];
+    (items.length ? items : ['Add included items in pricing.json']).forEach((item) => {
+      includes.appendChild(makeText('li', '', item));
+    });
+
+    card.append(cardHeading, price, description, includesHeading, includes);
+    return card;
+  };
+
+  const renderCategory = (categories, selectedIndex, buttons) => {
+    buttons.forEach((button, index) => {
+      const selected = index === selectedIndex;
+      button.classList.toggle('is-selected', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+
+    const tiers = Array.isArray(categories[selectedIndex]?.tiers)
+      ? categories[selectedIndex].tiers.slice(0, 3)
+      : [];
+    const cards = tiers.map(createTierCard);
+
+    if (cards.length === 0) {
+      catalog.replaceChildren(makeText('p', 'pricing-empty', 'Add up to three service levels in pricing.json.'));
+      return;
+    }
+    catalog.replaceChildren(...cards);
+  };
+
   try {
     const response = await fetch('./src/data/pricing.json');
     if (!response.ok) throw new Error(`Could not load pricing: ${response.status}`);
     const categories = await response.json();
-    if (!Array.isArray(categories)) throw new Error('Pricing data must be a list.');
-
-    const navItems = [];
-    const categorySections = [];
-
-    categories.forEach((categoryData) => {
-      if (!categoryData || !categoryData.category) return;
-      const slug = slugify(categoryData.category);
-      const categorySection = document.createElement('section');
-      categorySection.className = 'pricing-category';
-      categorySection.id = `pricing-category-${slug}`;
-
-      const heading = makeText('h3', 'pricing-category-title', categoryData.category);
-      const plans = document.createElement('div');
-      plans.className = 'pricing-plans';
-
-      (Array.isArray(categoryData.tiers) ? categoryData.tiers.slice(0, 3) : []).forEach((tier, index) => {
-        const card = document.createElement('article');
-        card.className = 'pricing-card';
-        if (index === 1) card.classList.add('pricing-card-featured');
-
-        const cardHeading = document.createElement('div');
-        cardHeading.className = 'pricing-card-heading';
-        cardHeading.appendChild(makeText('h4', 'pricing-tier-name', tier.name || `Level ${index + 1}`));
-
-        const price = makeText('p', 'pricing-price', tier.price || 'Add price');
-        const description = makeText(
-          'p',
-          'pricing-description',
-          tier.description || 'Add a short description of this service level.'
-        );
-
-        const includesHeading = makeText('h5', 'pricing-includes-title', 'Includes');
-        const includes = document.createElement('ul');
-        includes.className = 'pricing-includes';
-        const items = Array.isArray(tier.includes) ? tier.includes : [];
-        (items.length ? items : ['Add included items in pricing.json']).forEach((item) => {
-          includes.appendChild(makeText('li', '', item));
-        });
-
-        card.append(cardHeading, price, description, includesHeading, includes);
-        plans.appendChild(card);
-      });
-
-      categorySection.append(heading, plans);
-      categorySections.push(categorySection);
-
-      const link = document.createElement('a');
-      link.className = 'pricing-category-link';
-      link.href = `#pricing-category-${slug}`;
-      link.textContent = categoryData.category;
-      navItems.push(link);
-    });
-
-    if (categorySections.length === 0) {
-      catalog.appendChild(makeText('p', 'pricing-empty', 'Add service categories in pricing.json.'));
-      return;
+    if (!Array.isArray(categories) || categories.length === 0) {
+      throw new Error('Pricing data must contain at least one category.');
     }
 
-    categoryNav.replaceChildren(...navItems);
-    catalog.replaceChildren(...categorySections);
+    const availableCategories = categories.filter((item) => item && item.category);
+    const buttons = availableCategories.map((item, index) => {
+      const button = makeText('button', 'pricing-category-link', item.category);
+      button.type = 'button';
+      button.setAttribute('aria-controls', 'pricing-catalog');
+      button.setAttribute('aria-pressed', 'false');
+      button.addEventListener('click', () => renderCategory(availableCategories, index, buttons));
+      return button;
+    });
+
+    if (buttons.length === 0) throw new Error('No valid pricing categories were found.');
+    categoryNav.replaceChildren(...buttons);
+    renderCategory(availableCategories, 0, buttons);
   } catch (error) {
     console.error('Error loading pricing categories:', error);
+    categoryNav.replaceChildren();
     catalog.replaceChildren(makeText('p', 'pricing-empty', 'Pricing information is temporarily unavailable.'));
   }
 });
