@@ -1469,3 +1469,22 @@ body {
     will-change: auto;
   }
 }
+
+
+/* Keep scrolling available without showing transient scrollbars */
+.Aboutme,
+.section-content,
+#pricing-catalog {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.Aboutme::-webkit-scrollbar,
+.section-content::-webkit-scrollbar,
+#pricing-catalog::-webkit-scrollbar,
+#pricing-catalog *::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
