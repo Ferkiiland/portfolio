@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
 
   const renderCategory = (categories, selectedIndex, buttons) => {
+    catalog.scrollLeft = 0;
     buttons.forEach((button, index) => {
       const selected = index === selectedIndex;
       button.classList.toggle('is-selected', selected);
