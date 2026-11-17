@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     const plans = document.createElement('div');
     plans.className = 'pricing-plans';
+    if (cards.length === 1) plans.classList.add('has-single-plan');
     plans.replaceChildren(...cards);
     catalog.replaceChildren(plans);
   };
