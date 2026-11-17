@@ -48,22 +48,12 @@
     "category": "Builder",
     "tiers": [
       {
-        "name": "Basic",
-        "price": "",
-        "description": "",
-        "includes": []
-      },
-      {
-        "name": "Standard",
-        "price": "",
-        "description": "",
-        "includes": []
-      },
-      {
-        "name": "Premium",
-        "price": "",
-        "description": "",
-        "includes": []
+        "name": "Map Buildings",
+        "price": "30",
+        "description": "Full map imported to Roblox Studio and optimized",
+        "includes": [
+          ".Rbxm File"
+        ]
       }
     ]
   },
