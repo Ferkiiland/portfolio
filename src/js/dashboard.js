@@ -11,8 +11,8 @@
 
   let token = '';
   let activeTab = 'portfolio';
-  let selectedProject = -1;
-  let selectedPricingCategory = 0;
+  let selectedTrabajo = -1;
+  let selectedPricingCategoría = 0;
   let selectedTestimonial = -1;
   let toastTimer = null;
 
@@ -128,10 +128,10 @@
     let result = {};
     try { result = await response.json(); } catch (_) {}
     if (!response.ok) {
-      if (response.status === 401) throw new Error('GitHub rejected the token. Check that it is valid and has not expired.');
-      if (response.status === 403) throw new Error('GitHub denied access. Confirm the token has Contents read and write permission for this repository.');
-      if (response.status === 404) throw new Error('The repository or a data file could not be found. Check the token repository access.');
-      if (response.status === 409 || response.status === 422) throw new Error('GitHub could not save this change. The file may have changed elsewhere; disconnect, reconnect and try again.');
+      if (response.status === 401) throw new Error('GitHub rechazó el token. Comprueba que sea válido y no haya caducado.');
+      if (response.status === 403) throw new Error('GitHub denegó el acceso. Confirma que el token tenga permiso Contents de lectura y escritura para este repositorio.');
+      if (response.status === 404) throw new Error('No se encontró el repositorio o uno de los archivos. Revisa el acceso del token.');
+      if (response.status === 409 || response.status === 422) throw new Error('GitHub no pudo guardar el cambio. El archivo pudo cambiar en otro lugar; desconéctate, vuelve a conectar e inténtalo otra vez.');
       throw new Error(result.message || `GitHub request failed (${response.status}).`);
     }
     return result;
@@ -161,10 +161,10 @@
     file.sha = result.content.sha;
   };
 
-  const uploadProjectImage = async (file, title) => {
+  const uploadTrabajoImage = async (file, title) => {
     const allowed = ['image/png', 'image/jpeg', 'image/webp', 'image/gif'];
-    if (!allowed.includes(file.type)) throw new Error('Choose a PNG, JPG, WebP or GIF image.');
-    if (file.size > 8 * 1024 * 1024) throw new Error('Images must be 8 MB or smaller.');
+    if (!allowed.includes(file.type)) throw new Error('Elige una imagen PNG, JPG, WebP o GIF.');
+    if (file.size > 8 * 1024 * 1024) throw new Error('Las imágenes deben pesar 8 MB o menos.');
 
     const extension = (file.name.split('.').pop() || 'png').toLowerCase().replace(/[^a-z0-9]/g, '');
     const slug = (title || 'portfolio-item')
@@ -179,7 +179,7 @@
     await githubRequest(`contents/${apiPath(path)}`, {
       method: 'PUT',
       body: JSON.stringify({
-        message: `Add portfolio image: ${title || imageName}`,
+        message: `Agregar imagen del portfolio: ${title || imageName}`,
         content: encodeBase64(bytes),
         branch: BRANCH
       })
@@ -216,23 +216,23 @@
     const projects = CONTENTS.projects.data || [];
     workspaceContent.replaceChildren();
 
-    const addButton = button('+ Add project', 'button button-primary');
+    const addButton = button('+ Agregar trabajo', 'button button-primary');
     addButton.addEventListener('click', () => {
-      selectedProject = -1;
+      selectedTrabajo = -1;
       drawPortfolioEditor();
     });
 
-    const heading = makeViewHeading('Portfolio projects', 'Add work, choose a category and upload a cover image.', addButton);
+    const heading = makeViewHeading('Trabajos del portfolio', 'Agrega trabajos, asigna una categoría y carga una imagen.', addButton);
     const layout = element('div', 'editor-layout');
     const sidebar = element('aside', 'editor-sidebar');
-    const sideHead = element('p', 'sidebar-heading', `${projects.length} projects`);
+    const sideHead = element('p', 'sidebar-heading', `${projects.length} trabajos`);
     const list = element('div', 'item-list');
     projects.forEach((project, index) => {
-      const item = button('', `list-item${selectedProject === index ? ' is-active' : ''}`);
-      item.append(element('strong', '', project.title || 'Untitled project'));
-      item.append(element('span', '', `${project.category || 'Uncategorized'} · ${project.year || '—'}`));
+      const item = button('', `list-item${selectedTrabajo === index ? ' is-active' : ''}`);
+      item.append(element('strong', '', project.title || 'Trabajo sin título'));
+      item.append(element('span', '', `${project.category || 'Sin categoría'} · ${project.year || '—'}`));
       item.addEventListener('click', () => {
-        selectedProject = index;
+        selectedTrabajo = index;
         renderPortfolioView();
       });
       list.appendChild(item);
@@ -243,16 +243,16 @@
     workspaceContent.append(heading, layout);
 
     const drawPortfolioEditor = () => {
-      const current = selectedProject >= 0 ? projects[selectedProject] : null;
+      const current = selectedTrabajo >= 0 ? projects[selectedTrabajo] : null;
       editor.replaceChildren();
-      editor.appendChild(element('h3', '', current ? 'Edit project' : 'New project'));
+      editor.appendChild(element('h3', '', current ? 'Editar trabajo' : 'Nuevo trabajo'));
 
       const form = element('form', 'editor-form');
       form.noValidate = false;
       const formGrid = element('div', 'form-grid');
       formGrid.append(
-        field('Project title', current?.title || '', { field: 'title', required: true, placeholder: 'Project name' }),
-        field('Category', current?.category || '', { field: 'category', required: true, placeholder: 'UI & UX, GFX, Modeling…', list: 'project-categories' }),
+        field('Título del trabajo', current?.title || '', { field: 'title', required: true, placeholder: 'Nombre del trabajo' }),
+        field('Categoría', current?.category || '', { field: 'category', required: true, placeholder: 'UI & UX, GFX, Modeling…', list: 'project-categories' }),
         field('Year', current?.year || String(new Date().getFullYear()), { field: 'year', placeholder: '2026' })
       );
 
@@ -266,23 +266,22 @@
       formGrid.appendChild(dataList);
 
       const imageField = element('div', 'field');
-      imageField.appendChild(element('span', 'field-label', 'Cover image'));
-      imageField.appendChild(field('', '', {
-        type: 'file',
-        field: 'image',
-        accept: 'image/png,image/jpeg,image/webp,image/gif',
-        help: 'PNG, JPG, WebP or GIF · up to 8 MB'
-      }).querySelector('input'));
+      imageField.appendChild(element('span', 'field-label', 'Imagen de portada'));
+      const fileInput = element('input');
+      fileInput.type = 'file';
+      fileInput.accept = 'image/png,image/jpeg,image/webp,image/gif';
+      fileInput.dataset.field = 'image';
+      fileInput.setAttribute('aria-label', 'Elegir imagen para el trabajo');
+      imageField.append(fileInput, element('span', 'field-help-inline', 'PNG, JPG, WebP o GIF · hasta 8 MB'));
 
       const previewWrap = element('div', 'image-preview-wrap');
       const preview = element('img', 'image-preview');
-      preview.alt = 'Project preview';
-      const previewPlaceholder = element('span', 'image-preview-placeholder', current?.image ? `Current image: ${current.image}` : 'Choose an image to preview it here.');
+      preview.alt = 'Vista previa del trabajo';
+      const previewPlaceholder = element('span', 'image-preview-placeholder', current?.image ? `Imagen actual: ${current.image}` : 'Elige una imagen para verla aquí.');
       if (current?.image) preview.src = `./src/images/PortfolioPreview/${encodeURIComponent(current.image)}`;
       else preview.hidden = true;
       previewWrap.append(preview, previewPlaceholder);
       imageField.appendChild(previewWrap);
-      const fileInput = imageField.querySelector('input[type="file"]');
       fileInput.addEventListener('change', () => {
         const file = fileInput.files?.[0];
         if (!file) return;
@@ -291,18 +290,18 @@
         previewPlaceholder.textContent = file.name;
       });
 
-      const saveButton = button(current ? 'Save project' : 'Add project', 'button button-primary', 'submit');
+      const saveButton = button(current ? 'Guardar trabajo' : 'Agregar trabajo', 'button button-primary', 'submit');
       const deleteButton = current ? button('Delete project', 'button button-danger') : null;
       if (deleteButton) {
         deleteButton.addEventListener('click', async () => {
-          if (!window.confirm(`Delete “${current.title}” from the portfolio list?`)) return;
-          const next = projects.filter((_, index) => index !== selectedProject);
+          if (!window.confirm(`¿Eliminar “${current.title}” del portfolio?`)) return;
+          const next = projects.filter((_, index) => index !== selectedTrabajo);
           deleteButton.disabled = true;
           try {
-            await saveJsonFile('projects', next, `Remove portfolio project: ${current.title}`);
-            selectedProject = -1;
+            await saveJsonFile('projects', next, `Quitar portfolio project: ${current.title}`);
+            selectedTrabajo = -1;
             renderPortfolioView();
-            showToast('Project removed from the live portfolio.');
+            showToast('Trabajo eliminado del portfolio.');
           } catch (error) {
             deleteButton.disabled = false;
             showToast(error.message, true);
@@ -321,31 +320,31 @@
         const year = form.querySelector('[data-field="year"]').value.trim();
         const selectedFile = fileInput.files?.[0];
         if (!title || !category) {
-          showToast('Add a project title and category first.', true);
+          showToast('Escribe primero el título y la categoría.', true);
           return;
         }
         if (!selectedFile && !current?.image) {
-          showToast('Choose a cover image for this project.', true);
+          showToast('Elige una imagen de portada para este trabajo.', true);
           return;
         }
 
         saveButton.disabled = true;
-        saveButton.textContent = selectedFile ? 'Uploading image…' : 'Saving…';
+        saveButton.textContent = selectedFile ? 'Subiendo imagen…' : 'Guardando…';
         try {
           let image = current?.image || '';
-          if (selectedFile) image = await uploadProjectImage(selectedFile, title);
+          if (selectedFile) image = await uploadTrabajoImage(selectedFile, title);
           const entry = { image, title, category, year };
           const next = projects.slice();
-          const targetIndex = selectedProject < 0 ? next.length : selectedProject;
-          if (selectedProject < 0) next.push(entry);
-          else next[selectedProject] = entry;
+          const targetIndex = selectedTrabajo < 0 ? next.length : selectedTrabajo;
+          if (selectedTrabajo < 0) next.push(entry);
+          else next[selectedTrabajo] = entry;
           await saveJsonFile('projects', next, `${current ? 'Update' : 'Add'} portfolio project: ${title}`);
-          selectedProject = targetIndex;
+          selectedTrabajo = targetIndex;
           renderPortfolioView();
-          showToast('Project saved. GitHub Pages will publish the update shortly.');
+          showToast('Trabajo guardado. GitHub Pages publicará el cambio en breve.');
         } catch (error) {
           saveButton.disabled = false;
-          saveButton.textContent = current ? 'Save project' : 'Add project';
+          saveButton.textContent = current ? 'Guardar trabajo' : 'Agregar trabajo';
           showToast(error.message, true);
         }
       });
@@ -360,25 +359,25 @@
     const categories = CONTENTS.pricing.data || [];
     workspaceContent.replaceChildren();
 
-    const addCategoryButton = button('+ Add category', 'button button-primary');
-    addCategoryButton.addEventListener('click', () => {
+    const addCategoríaButton = button('+ Agregar categoría', 'button button-primary');
+    addCategoríaButton.addEventListener('click', () => {
       categories.push({
-        category: 'New category',
-        tiers: [{ name: 'Basic', price: '', description: '', includes: [] }]
+        category: 'Nueva categoría',
+        tiers: [{ name: 'Básico', price: '', description: '', includes: [] }]
       });
-      selectedPricingCategory = categories.length - 1;
+      selectedPricingCategoría = categories.length - 1;
       renderPricingView();
     });
 
-    const heading = makeViewHeading('Pricing packages', 'Edit up to three service levels for each category.', addCategoryButton);
+    const heading = makeViewHeading('Paquetes de precios', 'Edita hasta tres niveles de servicio por categoría.', addCategoríaButton);
     const layout = element('div', 'editor-layout');
     const sidebar = element('aside', 'editor-sidebar');
-    sidebar.appendChild(element('p', 'sidebar-heading', 'Service categories'));
+    sidebar.appendChild(element('p', 'sidebar-heading', 'Categorías de servicio'));
     const categoryList = element('div', 'item-list');
     categories.forEach((category, index) => {
-      const item = button(category.category || 'Untitled category', `list-item${selectedPricingCategory === index ? ' is-active' : ''}`);
+      const item = button(category.category || 'Categoría sin nombre', `list-item${selectedPricingCategoría === index ? ' is-active' : ''}`);
       item.addEventListener('click', () => {
-        selectedPricingCategory = index;
+        selectedPricingCategoría = index;
         renderPricingView();
       });
       categoryList.appendChild(item);
@@ -390,13 +389,13 @@
     workspaceContent.append(heading, layout);
 
     if (categories.length === 0) {
-      editor.appendChild(element('p', 'empty-state', 'Add a service category to begin.'));
+      editor.appendChild(element('p', 'empty-state', 'Agrega una categoría de servicio para empezar.'));
       return;
     }
 
-    const current = categories[selectedPricingCategory] || categories[0];
+    const current = categories[selectedPricingCategoría] || categories[0];
     const form = element('form', 'editor-form');
-    const categoryField = field('Category name', current.category, { field: 'category', required: true });
+    const categoryField = field('Categoría name', current.category, { field: 'category', required: true });
     form.appendChild(categoryField);
 
     const tierWrap = element('div', 'tier-editors');
@@ -405,8 +404,8 @@
       tiers.slice(0, 3).forEach((tier, index) => {
         const card = element('section', 'tier-editor');
         const head = element('div', 'sidebar-heading');
-        head.appendChild(element('strong', '', `Level ${index + 1}`));
-        const removeTier = button('Remove', 'button button-quiet');
+        head.appendChild(element('strong', '', `Nivel ${index + 1}`));
+        const removeTier = button('Quitar', 'button button-quiet');
         removeTier.addEventListener('click', () => {
           collectPricingDraft();
           current.tiers.splice(index, 1);
@@ -415,13 +414,13 @@
         head.appendChild(removeTier);
         card.appendChild(head);
         card.append(
-          field('Level name', tier.name, { field: 'name', required: true }),
-          field('Price', tier.price, { field: 'price', placeholder: 'Starting at $…' }),
-          field('Description', tier.description, { type: 'textarea', field: 'description' }),
-          field('Included items', Array.isArray(tier.includes) ? tier.includes.join('\n') : '', {
+          field('Nombre del nivel', tier.name, { field: 'name', required: true }),
+          field('Precio', tier.price, { field: 'price', placeholder: 'Desde $…' }),
+          field('Descripción', tier.description, { type: 'textarea', field: 'description' }),
+          field('Elementos incluidos', Array.isArray(tier.includes) ? tier.includes.join('\n') : '', {
             type: 'textarea',
             field: 'includes',
-            help: 'One item per line.'
+            help: 'Un elemento por línea.'
           })
         );
         tierWrap.appendChild(card);
@@ -443,68 +442,68 @@
     };
 
     drawTiers(Array.isArray(current.tiers) ? current.tiers : []);
-    const addTierButton = button('+ Add level', 'button button-secondary');
+    const addTierButton = button('+ Agregar nivel', 'button button-secondary');
     addTierButton.addEventListener('click', () => {
       collectPricingDraft();
       if (current.tiers.length >= 3) return;
-      current.tiers.push({ name: 'New level', price: '', description: '', includes: [] });
+      current.tiers.push({ name: 'Nuevo nivel', price: '', description: '', includes: [] });
       drawTiers(current.tiers);
     });
 
-    const saveButton = button('Save pricing', 'button button-primary', 'submit');
-    const deleteCategoryButton = button('Delete category', 'button button-danger');
-    deleteCategoryButton.disabled = categories.length <= 1;
-    deleteCategoryButton.title = categories.length <= 1 ? 'Keep at least one pricing category.' : '';
-    deleteCategoryButton.addEventListener('click', async () => {
+    const saveButton = button('Guardar precios', 'button button-primary', 'submit');
+    const deleteCategoríaButton = button('Eliminar categoría', 'button button-danger');
+    deleteCategoríaButton.disabled = categories.length <= 1;
+    deleteCategoríaButton.title = categories.length <= 1 ? 'Debe quedar al menos una categoría de precios.' : '';
+    deleteCategoríaButton.addEventListener('click', async () => {
       if (categories.length <= 1) return;
-      if (!window.confirm(`Delete the “${current.category}” pricing category?`)) return;
-      const next = categories.filter((_, index) => index !== selectedPricingCategory);
-      deleteCategoryButton.disabled = true;
+      if (!window.confirm(`¿Eliminar la categoría de precios “${current.category}”?`)) return;
+      const next = categories.filter((_, index) => index !== selectedPricingCategoría);
+      deleteCategoríaButton.disabled = true;
       try {
-        await saveJsonFile('pricing', next, `Remove pricing category: ${current.category}`);
-        selectedPricingCategory = Math.max(0, selectedPricingCategory - 1);
+        await saveJsonFile('pricing', next, `Quitar pricing category: ${current.category}`);
+        selectedPricingCategoría = Math.max(0, selectedPricingCategoría - 1);
         renderPricingView();
-        showToast('Pricing category deleted.');
+        showToast('Categoría de precios eliminada.');
       } catch (error) {
-        deleteCategoryButton.disabled = false;
+        deleteCategoríaButton.disabled = false;
         showToast(error.message, true);
       }
     });
 
     form.append(tierWrap, actions(
-      actionGroup(deleteCategoryButton, addTierButton),
+      actionGroup(deleteCategoríaButton, addTierButton),
       saveButton
     ));
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       collectPricingDraft();
       if (!current.category.trim()) {
-        showToast('Enter a category name.', true);
+        showToast('Escribe el nombre de la categoría.', true);
         return;
       }
       if (current.tiers.length > 3) {
-        showToast('Each category can have up to three levels.', true);
+        showToast('Cada categoría puede tener hasta tres niveles.', true);
         return;
       }
       if (current.tiers.some(tier => !tier.name)) {
-        showToast('Give each pricing level a name.', true);
+        showToast('Ponle un nombre a cada nivel de precios.', true);
         return;
       }
-      const names = categories.map((category, index) => index === selectedPricingCategory ? current.category.toLowerCase() : category.category.toLowerCase());
+      const names = categories.map((category, index) => index === selectedPricingCategoría ? current.category.toLowerCase() : category.category.toLowerCase());
       if (new Set(names).size !== names.length) {
-        showToast('Each pricing category needs a unique name.', true);
+        showToast('Cada categoría de precios debe tener un nombre único.', true);
         return;
       }
 
       saveButton.disabled = true;
-      saveButton.textContent = 'Saving…';
+      saveButton.textContent = 'Guardando…';
       try {
-        await saveJsonFile('pricing', categories, `Update pricing: ${current.category}`);
+        await saveJsonFile('pricing', categories, `Actualizar precios: ${current.category}`);
         renderPricingView();
-        showToast('Pricing saved. The live site will update shortly.');
+        showToast('Precios guardados. El sitio se actualizará en breve.');
       } catch (error) {
         saveButton.disabled = false;
-        saveButton.textContent = 'Save pricing';
+        saveButton.textContent = 'Guardar precios';
         showToast(error.message, true);
       }
     });
@@ -515,20 +514,20 @@
     const testimonials = CONTENTS.testimonials.data || [];
     workspaceContent.replaceChildren();
 
-    const addButton = button('+ Add testimonial', 'button button-primary');
+    const addButton = button('+ Agregar testimonio', 'button button-primary');
     addButton.addEventListener('click', () => {
       selectedTestimonial = -1;
       renderTestimonialsView();
     });
-    const heading = makeViewHeading('Client testimonials', 'Publish reviews shared by your clients.', addButton);
+    const heading = makeViewHeading('Testimonios de clientes', 'Publica las reseñas que te han compartido tus clientes.', addButton);
     const layout = element('div', 'editor-layout');
     const sidebar = element('aside', 'editor-sidebar');
-    sidebar.appendChild(element('p', 'sidebar-heading', `${testimonials.length} testimonials`));
+    sidebar.appendChild(element('p', 'sidebar-heading', `${testimonials.length} testimonios`));
     const list = element('div', 'item-list');
     testimonials.forEach((testimonial, index) => {
       const item = button('', `list-item${selectedTestimonial === index ? ' is-active' : ''}`);
-      item.append(element('strong', '', testimonial.client || 'Unnamed client'));
-      item.append(element('span', '', `${testimonial.project || 'No project'} · ${testimonial.rating || 5}★`));
+      item.append(element('strong', '', testimonial.client || 'Cliente sin nombre'));
+      item.append(element('span', '', `${testimonial.project || 'Sin proyecto'} · ${testimonial.rating || 5}★`));
       item.addEventListener('click', () => {
         selectedTestimonial = index;
         renderTestimonialsView();
@@ -541,37 +540,37 @@
     layout.append(sidebar, editor);
     workspaceContent.append(heading, layout);
     const current = selectedTestimonial >= 0 ? testimonials[selectedTestimonial] : null;
-    editor.appendChild(element('h3', '', current ? 'Edit testimonial' : 'New testimonial'));
+    editor.appendChild(element('h3', '', current ? 'Editar testimonio' : 'Nuevo testimonio'));
     const form = element('form', 'editor-form');
     const grid = element('div', 'form-grid');
     grid.append(
-      field('Client name', current?.client || '', { field: 'client', required: true }),
-      field('Project', current?.project || '', { field: 'project' }),
-      field('Category', current?.category || '', { field: 'category', placeholder: 'UI & UX, GFX…' }),
-      field('Rating', current?.rating || 5, {
+      field('Nombre del cliente', current?.client || '', { field: 'client', required: true }),
+      field('Trabajo', current?.project || '', { field: 'project' }),
+      field('Categoría', current?.category || '', { field: 'category', placeholder: 'UI & UX, GFX…' }),
+      field('Calificación', current?.rating || 5, {
         type: 'select',
         field: 'rating',
-        options: [5, 4, 3, 2, 1].map(value => ({ value, label: `${value} stars` }))
+        options: [5, 4, 3, 2, 1].map(value => ({ value, label: `${value} estrellas` }))
       })
     );
-    const quote = field('Client review', current?.quote || '', {
+    const quote = field('Reseña del cliente', current?.quote || '', {
       type: 'textarea',
       field: 'quote',
       required: true,
-      help: 'Use the client’s exact words and get their approval before publishing.'
+      help: 'Usa las palabras exactas del cliente y obtén su aprobación antes de publicarlas.'
     });
-    const saveButton = button(current ? 'Save testimonial' : 'Add testimonial', 'button button-primary', 'submit');
-    const deleteButton = current ? button('Delete testimonial', 'button button-danger') : null;
+    const saveButton = button(current ? 'Guardar testimonio' : 'Agregar testimonio', 'button button-primary', 'submit');
+    const deleteButton = current ? button('Eliminar testimonio', 'button button-danger') : null;
     if (deleteButton) {
       deleteButton.addEventListener('click', async () => {
-        if (!window.confirm(`Delete the testimonial from ${current.client}?`)) return;
+        if (!window.confirm(`¿Eliminar el testimonio de ${current.client}?`)) return;
         const next = testimonials.filter((_, index) => index !== selectedTestimonial);
         deleteButton.disabled = true;
         try {
-          await saveJsonFile('testimonials', next, `Remove testimonial: ${current.client}`);
+          await saveJsonFile('testimonials', next, `Quitar testimonial: ${current.client}`);
           selectedTestimonial = -1;
           renderTestimonialsView();
-          showToast('Testimonial deleted.');
+          showToast('Testimonio eliminado.');
         } catch (error) {
           deleteButton.disabled = false;
           showToast(error.message, true);
@@ -592,7 +591,7 @@
         quote: form.querySelector('[data-field="quote"]').value.trim()
       };
       if (!entry.client || !entry.quote) {
-        showToast('Add the client name and their review.', true);
+        showToast('Agrega el nombre del cliente y su reseña.', true);
         return;
       }
       const next = testimonials.slice();
@@ -601,15 +600,15 @@
       else next[selectedTestimonial] = entry;
 
       saveButton.disabled = true;
-      saveButton.textContent = 'Saving…';
+      saveButton.textContent = 'Guardando…';
       try {
         await saveJsonFile('testimonials', next, `${current ? 'Update' : 'Add'} testimonial: ${entry.client}`);
         selectedTestimonial = targetIndex;
         renderTestimonialsView();
-        showToast('Testimonial saved. The live site will update shortly.');
+        showToast('Testimonio guardado. El sitio se actualizará en breve.');
       } catch (error) {
         saveButton.disabled = false;
-        saveButton.textContent = current ? 'Save testimonial' : 'Add testimonial';
+        saveButton.textContent = current ? 'Guardar testimonio' : 'Agregar testimonio';
         showToast(error.message, true);
       }
     });
@@ -629,7 +628,7 @@
       workspace.hidden = false;
       disconnectButton.hidden = false;
       switchView('portfolio');
-      showToast('Connected. Your content is ready to edit.');
+      showToast('Conexión lista. Ya puedes editar el contenido.');
     } catch (error) {
       token = '';
       setConnectError(error.message || 'Could not connect to GitHub.');
@@ -650,6 +649,6 @@
     disconnectButton.hidden = true;
     connectPanel.hidden = false;
     setConnectError('');
-    showToast('Disconnected. The token has been cleared from memory.');
+    showToast('Desconectado. El token se eliminó de la memoria.');
   });
 })();
