@@ -3,313 +3,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const portfolioSection = document.querySelector('.PortfolioSection');
     if (!portfolioSection) return;
     
-    // CONFIGURACIÓN DETALLADA DE CADA PROYECTO
-    const PROJECTS = [
-      {
-        image: 'SpinWheel.png',
-        title: 'Magic Spin Wheel',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-      {
-        image: 'Daily Rewards.png',
-        title: 'DWF Daily rewards',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'Codes Ui.png',
-        title: 'DWF Codes UI',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'Drawing UI.png',
-        title: 'DWF Drawing UI',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'Emojis-1.png',
-        title: 'DWF emojis',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'DwfComponents.png',
-        title: 'DWF components',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'Shop.png',
-        title: 'Slender Shop Frame',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'HgMain2.png',
-        title: 'Main screen HGames',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'HgMain3.png',
-        title: 'Emote Wheel HGames',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'Achievements.png',
-        title: 'Slender Achievements',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'FPSConcept1.png',
-        title: 'FPS lobby',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'ThumbnailKaiden2.png',
-        title: 'Obby Thumbnail',
-        category: 'GFX',
-        year: '2025' 
-        },
-        {
-        image: 'Pets2@0,33x.png',
-        title: 'Pet pack 2',
-        category: 'Modeling',
-        year: '2025' 
-        },
-        {
-        image: 'Pets3@0,33x.png',
-        title: 'Egg pack',
-        category: 'Modeling',
-        year: '2025' 
-        },
-        {
-        image: 'Pets4.png',
-        title: 'Pet pack',
-        category: 'Modeling',
-        year: '2025' 
-        },
-        {
-        image: 'NewUIDesigns.png',
-        title: 'Car legends shop',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'Pause.png',
-        title: 'Pause UI',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-          image: 'Settings.png',
-          title: 'BDA settings',
-          category: 'UI & UX',
-          year: '2025' 
-        },
-        {
-          image: 'BDA MENU.png',
-          title: 'BDA Lobby menu',
-          category: 'UI & UX',
-          year: '2025' 
-        },
-        {
-        image: 'NewUIDesignTemplate3.png',
-        title: 'Egg shop',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'P2.png',
-        title: 'Vegeta Thumbnail',
-        category: 'GFX',
-        year: '2025' 
-        },
-        {
-        image: 'Player Selection.png',
-        title: 'Player Selection UI',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'RyanUIConcept.png',
-        title: 'HUD concept',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'Samplework1.png',
-        title: 'Inventory Cartoony UI',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'Samplework3.png',
-        title: 'Clouds Inventory UI',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'SCPF Emblems.png',
-        title: 'SCPF Emblems',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'ThumnailKaiden.png',
-        title: 'Kaiden´s group Thumbnail',
-        category: 'GFX',
-        year: '2025' 
-        },
-        {
-        image: 'Worlds.png',
-        title: 'Manga Heroes',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'Start screen.png',
-        title: 'Manga Heroes',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'TokensFrame.png',
-        title: 'Ryan Shop | TOKENS',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'RyanUIConceptShop.png',
-        title: 'Ryan Shop',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'WestyEmblemBadges.png',
-        title: 'Westy Emblem Badges',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'RedHood@0,33x.png',
-        title: 'RedHood',
-        category: 'UGC',
-        year: '2025' 
-        },
-        {
-        image: 'Short Hair.png',
-        title: 'Short Hair',
-        category: 'UGC',
-        year: '2025' 
-        },
-        {
-        image: 'Wavy Long Hair@0,33x.png',
-        title: 'Wavy Long Hair',
-        category: 'UGC',
-        year: '2025' 
-        },
-        {
-        image: 'LovelyHeadC3@0,33x.png',
-        title: 'LovelyHead',
-        category: 'UGC',
-        year: '2025' 
-        },
-        {
-        image: 'Kuromi Hat@0,33x.png',
-        title: 'Kuromi Hat',
-        category: 'UGC',
-        year: '2025' 
-        },
-        {
-        image: 'Lava Cracked Fedora@0,33x.png',
-        title: 'Lava Cracked Fedora',
-        category: 'UGC',
-        year: '2025' 
-        },
-        {
-        image: 'Kuromiss Clicker.png',
-        title: 'Kuromiss Clicker',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'Galatic Border Roleplay Main.png',
-        title: 'Galactic Border RP',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-       {
-        image: 'Lobby.png',
-        title: 'Nonamed FPS concept',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'Gamepasses@0,33x.png',
-        title: 'My Hotel icons',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'HxH@0,33x.png',
-        title: 'HxH Simulator',
-        category: 'GFX',
-        year: '2025' 
-        },
-        {
-        image: 'HP HUD.png',
-        title: 'Manga Heroes',
-        category: 'UI & UX',
-        year: '2025' 
-        },
-        {
-        image: 'FPSConcept2.png',
-        title: 'FPS Masters',
-        category: 'UI & UX',
-       year: '2025' 
-      },
-        {
-        image: 'CartoonMain.png',
-        title: 'Old CartoonyUI',
-        category: 'UI & UX',
-       year: '2025'
-      },
-      {
-        image: 'Components.png',
-        title: 'StreetBall Simulator',
-        category: 'UI & UX',
-        year: '2024'
-      },
-        {
-        image: 'Admin Panel start .png',
-        title: 'Frk Admin Panel',
-        category: 'UI & UX',
-        year: '2023'
-      },
-      {
-        image: 'Admin Panel.png',
-        title: 'Frk Admin Panel',
-        category: 'UI & UX',
-        year: '2023'
-      },
-      // AGREGA MÁS PROYECTOS AQUÍ:
-      // {
-      //   image: 'nombre_archivo.jpg',
-      //   title: 'Título del proyecto',
-      //   category: 'Categoría',
-      //   description: 'Descripción breve',
-      //   technologies: ['Tech1', 'Tech2'],
-      //   year: '2024'
-      // }
-    ];
-    
+    let PROJECTS = [];
+    const projectsPromise = fetch('./src/data/projects.json')
+      .then(response => {
+        if (!response.ok) throw new Error(`Could not load projects: ${response.status}`);
+        return response.json();
+      })
+      .then(projects => {
+        if (!Array.isArray(projects)) throw new Error('Portfolio data must be a list.');
+        PROJECTS = projects;
+        return projects;
+      });
+
     const IMAGES_FOLDER = './src/images/PortfolioPreview/';
     const MAX_COLUMNS = 2;
     
@@ -327,9 +32,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     observer.observe(portfolioSection, { attributes: true, attributeFilter: ['style'] });
     
-    function loadPortfolioProjects() {
+    async function loadPortfolioProjects() {
       const sectionContent = portfolioSection.querySelector('.section-content');
       if (!sectionContent) return;
+
+      try {
+        await projectsPromise;
+      } catch (error) {
+        console.error('Error loading portfolio projects:', error);
+        sectionContent.replaceChildren(document.createTextNode('Portfolio projects are temporarily unavailable.'));
+        return;
+      }
 
       sectionContent.innerHTML = '';
 
