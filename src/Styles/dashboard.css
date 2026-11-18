@@ -268,3 +268,37 @@ body::before {
     height: 32px;
   }
 }
+
+
+/* Keep long project categories scrollable inside their expanded panel */
+.project-category-items {
+  max-height: min(62vh, 580px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(174,181,255,.5) rgba(255,255,255,.04);
+  -webkit-overflow-scrolling: touch;
+}
+
+.project-category-items::-webkit-scrollbar {
+  width: 8px;
+}
+
+.project-category-items::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: rgba(255,255,255,.04);
+}
+
+.project-category-items::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: rgba(174,181,255,.5);
+  background-clip: padding-box;
+}
+
+@media (max-width: 800px) {
+  .project-category-items {
+    max-height: min(58vh, 440px);
+  }
+}
