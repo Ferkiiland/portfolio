@@ -21,6 +21,7 @@
   <script src="./src/js/portfolio-loader.js"></script>
   <script src="./src/js/pricing-loader.js"></script>
   <script src="./src/js/testimonials-loader.js"></script>
+  <script src="./src/js/active-orders-loader.js"></script>
 </head>
 <body>  
   <nav class="navbar">
@@ -147,11 +148,15 @@
   </div>
 </section>
 
-<!-- Sección Waitlist -->
+<!-- Waitlist availability -->
 <section class="WaitlistSection">
   <div class="section-content">
     <h2>Waitlist</h2>
-    <p>Contenido de la lista de espera aquí...</p>
+    <div class="waitlist-overview" aria-live="polite">
+      <span class="waitlist-eyebrow">CURRENT AVAILABILITY</span>
+      <p class="waitlist-summary">I’m currently working on <strong><span class="waitlist-current">—</span> active orders</strong> out of <strong><span class="waitlist-total">5</span> available slots</strong>.</p>
+      <p class="waitlist-note">Order availability updates as the waitlist changes.</p>
+    </div>
   </div>
 </section>
 
