@@ -131,3 +131,121 @@ main { padding-top: 42px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+
+/* Match the public portfolio's black glass and indigo palette */
+:root {
+  --page: #000000;
+  --surface: rgba(6, 6, 5, .78);
+  --surface-soft: rgba(255, 255, 255, .06);
+  --line: rgba(255, 255, 255, .14);
+  --text: #ffffff;
+  --muted: #b6b6c0;
+  --accent: #5865f2;
+  --accent-soft: rgba(88, 101, 242, .18);
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  background: #000 url('../images/Bg.svg') no-repeat center center / 150% 150% fixed;
+}
+
+body::before {
+  position: fixed;
+  z-index: -1;
+  inset: -10%;
+  background: radial-gradient(circle at center, transparent 42%, rgba(0,0,0,.42) 72%, rgba(0,0,0,.88) 100%);
+  content: '';
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+.dashboard-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.button-primary {
+  background: linear-gradient(135deg, #5865f2, #737eff);
+}
+
+.button-primary:hover {
+  background: linear-gradient(135deg, #6671ff, #8790ff);
+}
+
+/* Collapsible category groups in the portfolio editor */
+.project-category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-category-group {
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 12px;
+  background: rgba(255,255,255,.025);
+}
+
+.project-category-heading {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 11px;
+  color: #ececf4;
+  cursor: pointer;
+  font-size: .84rem;
+  font-weight: 600;
+  list-style: none;
+}
+
+.project-category-heading::-webkit-details-marker {
+  display: none;
+}
+
+.project-category-heading::before {
+  color: #aeb5ff;
+  content: '›';
+  font-size: 1.2rem;
+  transition: transform 160ms ease;
+}
+
+.project-category-group[open] > .project-category-heading::before {
+  transform: rotate(90deg);
+}
+
+.project-category-count {
+  display: inline-grid;
+  min-width: 22px;
+  height: 22px;
+  margin-left: auto;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(88,101,242,.17);
+  color: #c8ccff;
+  font-size: .72rem;
+}
+
+.project-category-items {
+  display: grid;
+  gap: 3px;
+  padding: 0 6px 6px;
+}
+
+.project-category-items .list-item {
+  padding: 8px 9px;
+}
+
+@media (max-width: 800px) {
+  body {
+    background-size: cover;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    background-size: auto 100%;
+  }
+}
