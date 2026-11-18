@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const portfolioSection = document.querySelector('.PortfolioSection');
     if (!portfolioSection) return;
     
+    const PORTFOLIO_CATEGORIES = ['UI & UX', 'GFX', 'Modeling', 'UGC', 'Building'];
     let PROJECTS = [];
     const projectsPromise = fetch('./src/data/projects.json')
       .then(response => {
@@ -65,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
       sectionContent.append(filterBar, portfolioGrid);
       addPortfolioStyles();
 
-      const categories = [...new Set(PROJECTS.map(project => project.category).filter(Boolean))];
+      const categories = [...new Set([...PORTFOLIO_CATEGORIES, ...PROJECTS.map(project => project.category).filter(Boolean)])];
       const filterOptions = [{ label: 'All', value: 'all' }, ...categories.map(category => ({
         label: category,
         value: category.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')
