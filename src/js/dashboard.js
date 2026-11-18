@@ -2,6 +2,7 @@
   const OWNER = 'Ferkiiland';
   const REPOSITORY = 'portfolio';
   const BRANCH = 'main';
+  const PORTFOLIO_CATEGORIES = ['UI & UX', 'GFX', 'Modeling', 'UGC', 'Building'];
   const API_ROOT = `https://api.github.com/repos/${OWNER}/${REPOSITORY}`;
   const CONTENTS = {
     projects: { path: 'src/data/projects.json', data: null, sha: null },
@@ -230,7 +231,7 @@
     const sidebar = element('aside', 'editor-sidebar');
     const sideHead = element('p', 'sidebar-heading', `${projects.length} trabajos`);
     const list = element('div', 'item-list project-category-list');
-    const projectCategories = [...new Set(projects.map(project => project.category || 'Sin categoría'))];
+    const projectCategories = [...new Set([...PORTFOLIO_CATEGORIES, ...projects.map(project => project.category || 'Sin categoría')])];
     const selectedCategory = selectedProject >= 0
       ? (projects[selectedProject]?.category || 'Sin categoría')
       : projectCategories[0];
@@ -272,7 +273,7 @@
       const form = element('form', 'editor-form');
       form.noValidate = false;
       const formGrid = element('div', 'form-grid');
-      const projectCategories = [...new Set(projects.map(project => project.category).filter(Boolean))];
+      const projectCategories = [...new Set([...PORTFOLIO_CATEGORIES, ...projects.map(project => project.category).filter(Boolean)])];
       const categoryOptions = projectCategories.map(category => ({ value: category, label: category }));
       formGrid.append(
         field('Título del trabajo', current?.title || '', { field: 'title', required: true, placeholder: 'Nombre del trabajo' }),
