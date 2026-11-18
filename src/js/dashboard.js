@@ -247,13 +247,20 @@
         element('span', 'project-category-count', String(categoryProjects.length))
       );
       const groupItems = element('div', 'project-category-items');
+      groupItems.dataset.category = category;
       categoryProjects.forEach(({ project, index }) => {
         const item = button('', `list-item${selectedProject === index ? ' is-active' : ''}`);
         item.append(element('strong', '', project.title || 'Trabajo sin título'));
         item.append(element('span', '', `${project.year || '—'}`));
         item.addEventListener('click', () => {
+          const categoryScrollTop = groupItems.scrollTop;
+          const pageScrollTop = window.scrollY;
           selectedProject = index;
           renderPortfolioView();
+          const nextCategoryItems = [...workspaceContent.querySelectorAll('.project-category-items')]
+            .find(items => items.dataset.category === category);
+          if (nextCategoryItems) nextCategoryItems.scrollTop = categoryScrollTop;
+          window.scrollTo(0, pageScrollTop);
         });
         groupItems.appendChild(item);
       });
