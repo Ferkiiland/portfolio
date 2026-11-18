@@ -6,7 +6,8 @@
   const CONTENTS = {
     projects: { path: 'src/data/projects.json', data: null, sha: null },
     pricing: { path: 'src/data/pricing.json', data: null, sha: null },
-    testimonials: { path: 'src/data/testimonials.json', data: null, sha: null }
+    testimonials: { path: 'src/data/testimonials.json', data: null, sha: null },
+    waitlist: { path: 'active-orders.json', data: null, sha: null }
   };
 
   let token = '';
@@ -14,6 +15,7 @@
   let selectedProject = -1;
   let selectedPricingCategory = 0;
   let selectedTestimonial = -1;
+  let selectedWaitlistEntry = -1;
   let toastTimer = null;
 
   const connectPanel = document.querySelector('#connect-panel');
@@ -197,6 +199,7 @@
     if (name === 'portfolio') renderPortfolioView();
     if (name === 'pricing') renderPricingView();
     if (name === 'testimonials') renderTestimonialsView();
+    if (name === 'waitlist') renderWaitlistView();
   };
 
   document.querySelectorAll('.workspace-tab').forEach((tab) => {
@@ -226,16 +229,35 @@
     const layout = element('div', 'editor-layout');
     const sidebar = element('aside', 'editor-sidebar');
     const sideHead = element('p', 'sidebar-heading', `${projects.length} trabajos`);
-    const list = element('div', 'item-list');
-    projects.forEach((project, index) => {
-      const item = button('', `list-item${selectedProject === index ? ' is-active' : ''}`);
-      item.append(element('strong', '', project.title || 'Trabajo sin título'));
-      item.append(element('span', '', `${project.category || 'Sin categoría'} · ${project.year || '—'}`));
-      item.addEventListener('click', () => {
-        selectedProject = index;
-        renderPortfolioView();
+    const list = element('div', 'item-list project-category-list');
+    const projectCategories = [...new Set(projects.map(project => project.category || 'Sin categoría'))];
+    const selectedCategory = selectedProject >= 0
+      ? (projects[selectedProject]?.category || 'Sin categoría')
+      : projectCategories[0];
+    projectCategories.forEach((category) => {
+      const categoryProjects = projects
+        .map((project, index) => ({ project, index }))
+        .filter(entry => (entry.project.category || 'Sin categoría') === category);
+      const group = element('details', 'project-category-group');
+      group.open = category === selectedCategory;
+      const summary = element('summary', 'project-category-heading');
+      summary.append(
+        element('span', '', category),
+        element('span', 'project-category-count', String(categoryProjects.length))
+      );
+      const groupItems = element('div', 'project-category-items');
+      categoryProjects.forEach(({ project, index }) => {
+        const item = button('', `list-item${selectedProject === index ? ' is-active' : ''}`);
+        item.append(element('strong', '', project.title || 'Trabajo sin título'));
+        item.append(element('span', '', `${project.year || '—'}`));
+        item.addEventListener('click', () => {
+          selectedProject = index;
+          renderPortfolioView();
+        });
+        groupItems.appendChild(item);
       });
-      list.appendChild(item);
+      group.append(summary, groupItems);
+      list.appendChild(group);
     });
     sidebar.append(sideHead, list);
     const editor = element('div', 'editor-card');
@@ -607,6 +629,146 @@
       } catch (error) {
         saveButton.disabled = false;
         saveButton.textContent = current ? 'Guardar testimonio' : 'Agregar testimonio';
+        showToast(error.message, true);
+      }
+    });
+    editor.appendChild(form);
+  };
+
+  const generateOrderKey = (entries) => {
+    const existing = new Set(entries.map(entry => String(entry.key || '').toLowerCase()));
+    let key = '';
+    do {
+      const bytes = new Uint8Array(4);
+      crypto.getRandomValues(bytes);
+      key = [...bytes].map(value => value.toString(16).padStart(2, '0')).join('');
+    } while (existing.has(key));
+    return key;
+  };
+
+  const renderWaitlistView = () => {
+    const entries = CONTENTS.waitlist.data || [];
+    workspaceContent.replaceChildren();
+
+    const addButton = button('+ Agregar entrada', 'button button-primary');
+    addButton.addEventListener('click', () => {
+      selectedWaitlistEntry = -1;
+      renderWaitlistView();
+    });
+    const heading = makeViewHeading(
+      'Waitlist / Active orders',
+      'Administra los pedidos activos. Cada cambio actualiza el contador público de Active orders.',
+      addButton
+    );
+    const layout = element('div', 'editor-layout');
+    const sidebar = element('aside', 'editor-sidebar');
+    sidebar.appendChild(element('p', 'sidebar-heading', `${entries.length} pedidos activos`));
+    const list = element('div', 'item-list');
+    entries.forEach((entry, index) => {
+      const item = button('', `list-item${selectedWaitlistEntry === index ? ' is-active' : ''}`);
+      item.append(element('strong', '', entry.userName || 'Cliente sin nombre'));
+      item.append(element('span', '', `${entry.title || 'Pedido sin título'} · ${entry.category || 'Sin categoría'}`));
+      item.addEventListener('click', () => {
+        selectedWaitlistEntry = index;
+        renderWaitlistView();
+      });
+      list.appendChild(item);
+    });
+    sidebar.appendChild(list);
+
+    const editor = element('div', 'editor-card');
+    layout.append(sidebar, editor);
+    workspaceContent.append(heading, layout);
+
+    const current = selectedWaitlistEntry >= 0 ? entries[selectedWaitlistEntry] : null;
+    editor.appendChild(element('h3', '', current ? 'Editar pedido' : 'Nueva entrada'));
+    const form = element('form', 'editor-form');
+    const categoryOptions = [...new Set([
+      ...(CONTENTS.projects.data || []).map(project => project.category),
+      ...entries.map(entry => entry.category)
+    ].filter(Boolean))].map(category => ({ value: category, label: category }));
+    const grid = element('div', 'form-grid');
+    grid.append(
+      field('Nombre del cliente', current?.userName || '', { field: 'userName', required: true, placeholder: 'Nombre o usuario' }),
+      field('Título del pedido', current?.title || '', { field: 'title', required: true }),
+      field('Categoría', current?.category || categoryOptions[0]?.value || '', {
+        type: 'select', field: 'category', required: true, options: categoryOptions
+      }),
+      field('Clave para reseña', current?.key || generateOrderKey(entries), {
+        field: 'key', required: true, help: 'La clave permite enviar una reseña desde Reviewpanel.'
+      })
+    );
+    const description = field('Descripción', current?.description || '', {
+      type: 'textarea', field: 'description', help: 'Opcional.'
+    });
+
+    const saveButton = button(current ? 'Guardar pedido' : 'Agregar a la waitlist', 'button button-primary', 'submit');
+    const deleteButton = current ? button('Eliminar pedido', 'button button-danger') : null;
+    if (deleteButton) {
+      deleteButton.addEventListener('click', async () => {
+        if (!window.confirm(`¿Eliminar el pedido de ${current.userName || current.title}?`)) return;
+        const next = entries.filter((_, index) => index !== selectedWaitlistEntry);
+        deleteButton.disabled = true;
+        try {
+          await saveJsonFile('waitlist', next, `Remove active order: ${current.title}`);
+          selectedWaitlistEntry = -1;
+          renderWaitlistView();
+          showToast('Pedido eliminado y contador Active orders actualizado.');
+        } catch (error) {
+          deleteButton.disabled = false;
+          showToast(error.message, true);
+        }
+      });
+    }
+
+    form.append(grid, description, actions(actionGroup(
+      ...(deleteButton ? [deleteButton] : []),
+      saveButton
+    )));
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const entry = {
+        ...(current || {}),
+        userName: form.querySelector('[data-field="userName"]').value.trim(),
+        title: form.querySelector('[data-field="title"]').value.trim(),
+        category: form.querySelector('[data-field="category"]').value,
+        key: form.querySelector('[data-field="key"]').value.trim(),
+        description: form.querySelector('[data-field="description"]').value.trim(),
+        createdAt: current?.createdAt || new Date().toISOString(),
+        createdBy: current?.createdBy || ''
+      };
+      if (!entry.userName || !entry.title || !entry.category || !entry.key) {
+        showToast('Completa cliente, pedido, categoría y clave.', true);
+        return;
+      }
+      const keyAlreadyUsed = entries.some((item, index) =>
+        index !== selectedWaitlistEntry && String(item.key).toLowerCase() === entry.key.toLowerCase()
+      );
+      if (keyAlreadyUsed) {
+        showToast('Esa clave ya está asignada a otro pedido.', true);
+        return;
+      }
+
+      const next = entries.slice();
+      const targetIndex = selectedWaitlistEntry < 0 ? next.length : selectedWaitlistEntry;
+      if (selectedWaitlistEntry < 0) {
+        entry.orderImage = null;
+        entry.userAvatar = '';
+        next.push(entry);
+      } else {
+        next[selectedWaitlistEntry] = entry;
+      }
+
+      saveButton.disabled = true;
+      saveButton.textContent = 'Guardando…';
+      try {
+        await saveJsonFile('waitlist', next, `${current ? 'Update' : 'Add'} active order: ${entry.title}`);
+        selectedWaitlistEntry = targetIndex;
+        renderWaitlistView();
+        showToast('Pedido guardado y contador Active orders actualizado.');
+      } catch (error) {
+        saveButton.disabled = false;
+        saveButton.textContent = current ? 'Guardar pedido' : 'Agregar a la waitlist';
         showToast(error.message, true);
       }
     });
