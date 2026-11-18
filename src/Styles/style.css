@@ -1629,3 +1629,40 @@ body {
     transition: none;
   }
 }
+
+
+/* Waitlist capacity summary */
+.WaitlistSection .waitlist-overview {
+  width: min(620px, 100%);
+  margin: 8px auto;
+  padding: clamp(24px, 5vw, 42px);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(6,6,5,.56));
+  box-shadow: 0 16px 40px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.08);
+  text-align: center;
+  backdrop-filter: blur(18px);
+}
+.waitlist-eyebrow {
+  color: #aeb5ff;
+  font-family: 'Fredoka', sans-serif;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+}
+.WaitlistSection .section-content .waitlist-summary {
+  margin: 16px 0 8px;
+  color: #fff;
+  font-family: 'Days One', sans-serif;
+  font-size: clamp(1.15rem, 3vw, 1.65rem);
+  line-height: 1.55;
+  text-align: center;
+}
+.waitlist-summary strong { color: #b7bdff; }
+.WaitlistSection .section-content .waitlist-note {
+  margin: 0;
+  color: rgba(255,255,255,.62);
+  font-family: 'Fredoka', sans-serif;
+  font-size: .92rem;
+  text-align: center;
+}
