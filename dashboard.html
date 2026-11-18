@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Days+One&family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./src/Styles/dashboard.css">
-  <script src="./src/js/dashboard.js?v=20261117-2" defer></script>
+  <link rel="stylesheet" href="./src/Styles/dashboard.css?v=20261117-3">
+  <script src="./src/js/dashboard.js?v=20261117-3" defer></script>
 </head>
 <body>
   <div class="dashboard-shell">
@@ -26,7 +26,6 @@
 
     <main>
       <section class="connect-panel" id="connect-panel">
-        <div class="connect-icon" aria-hidden="true">✦</div>
         <p class="eyebrow">PANEL PRIVADO DE CONTENIDO</p>
         <h1>Administra tu portfolio</h1>
         <p class="connect-copy">Edita trabajos, precios y testimonios. Cada guardado se registra en GitHub y se publica en el sitio cuando termine el despliegue.</p>
@@ -59,6 +58,7 @@
           <button class="workspace-tab is-active" type="button" role="tab" aria-selected="true" data-tab="portfolio">Portfolio</button>
           <button class="workspace-tab" type="button" role="tab" aria-selected="false" data-tab="pricing">Pricing</button>
           <button class="workspace-tab" type="button" role="tab" aria-selected="false" data-tab="testimonials">Testimonios</button>
+          <button class="workspace-tab" type="button" role="tab" aria-selected="false" data-tab="waitlist">Waitlist</button>
         </nav>
 
         <div class="workspace-content" id="workspace-content"></div>
