@@ -302,3 +302,44 @@ body::before {
     max-height: min(58vh, 440px);
   }
 }
+
+
+/* The category column must not create a second, competing scroll area */
+.item-list.project-category-list {
+  max-height: none;
+  overflow: visible;
+  min-height: 0;
+}
+
+.project-category-group {
+  min-width: 0;
+}
+
+.project-category-items {
+  display: block;
+  min-height: 0;
+  max-height: min(62vh, 580px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
+  scrollbar-width: auto;
+  scrollbar-color: rgba(174,181,255,.62) rgba(255,255,255,.07);
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 800px) {
+  .item-list.project-category-list {
+    grid-template-columns: 1fr;
+  }
+
+  .project-category-items {
+    max-height: min(58vh, 440px);
+  }
+}
+
+@media (max-width: 560px) {
+  .project-category-items {
+    max-height: min(55vh, 420px);
+  }
+}
