@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return button;
       });
 
-      PROJECTS.forEach((project, index) => {
+      [...PROJECTS].reverse().forEach((project, index) => {
         portfolioGrid.appendChild(createProjectItem(project, index));
       });
 
